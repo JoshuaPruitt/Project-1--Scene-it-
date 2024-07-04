@@ -28,7 +28,8 @@ form {
     margin-bottom: 10px;
 }
 
-.score {
+/* changes the score section */
+body header section {
     padding: 20px;
 }
 
@@ -42,12 +43,6 @@ form {
     padding: 20px;
 }
 
-.video {
-    min-width: 50vh;
-    min-height: 30vh;
-    background-color: rgb(226, 150, 150);
-}
-
 .start {
     display: flex;
     margin: 20px;
@@ -58,4 +53,15 @@ form {
 .question-box {
     display: flex;
     flex-direction: column;
+}
+
+#video {
+    /* aligning video to the center of the box */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* setting the boxes minimum width and height */
+    min-width: 50vh;
+    min-height: 30vh;
+    background-color: rgb(226, 150, 150);
 }

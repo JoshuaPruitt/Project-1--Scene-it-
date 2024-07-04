@@ -4,12 +4,16 @@
 // if the timer finishes before the questions have been answered then a fail will display onto the screen. Then it will go to the next question
 
 //Contained within header
-const score = document.getElementsByClassName('score');
+    //scoreCorrect and scoreWrong will change the number in both to update the score
+const scoreCorrrect = document.getElementsByClassName('scoreCorrect');
+const scoreWrong = document.getElementsByClassName('scoreWrong')
 const timeLeft = document.getElementsByClassName('timeLeft');
 const backButton = document.getElementsByClassName('backButton');
 
 //Contained within main section
-const videoBox = document.getElementsByClassName('video');
+const videoBox = document.getElementById('video');
+    //defaultVideo will likely be removed later
+const defaultVideo = document.getElementById('defaultVideo')
 const startButton = document.getElementsByClassName('start');
 
 //Contained within footer
@@ -29,7 +33,10 @@ var q = 0;
 
 //Test category
 let testObj = {
-    Video: 'this is the video!',
+    //add your video tags here when you create your seperate category. The code switches out the video for the video that q represents. If q = 0 then q will pull up the first video, so on and so forth.
+    Video: ['<iframe width="560" height="315" src="https://www.youtube.com/embed/7AvXEmQU69Q?si=MnfVvYsgfmm98UFA&amp;controls=0" title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>', 
+
+    ],
     //this stores all the questions for a category
     questions: [
         //question text stores the question label. Question answer shows the correct answer. q1-q4 are the selection labels
@@ -51,6 +58,18 @@ function displayQuestions(){
     selection2Label.innerHTML = testObj.questions[q].q2;
     selection3Label.innerHTML = testObj.questions[q].q3;
     selection4Label.innerHTML = testObj.questions[q].q4;
+
+    //remove video and add new one. If statement is for if there is a default video on the screen and we want to replace that. (will likely be removed as there will be no default video later)
+    if (q == 0){
+        //remove the default video
+        // videoBox.removeChild(defaultVideo)
+
+        //add new video and append it
+        videoBox.innerHTML = testObj.Video[q];
+        console.log('replaced default video')
+
+    } else
+        
 
     // add 1 to q to go to next question
     q++

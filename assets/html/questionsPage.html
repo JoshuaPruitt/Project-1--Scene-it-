@@ -10,15 +10,16 @@
     <!-- header is for the score, time left, and the back button-->
     <header>
       <!--Score-->
-      <section class="score">
+      <section>
         <table>
           <tr>
             <th><h2 class='scoreTitle'>Score:</h2></th>
           </tr>
-      
+          
+          <!--The updated score will be inserted into the span tags-->
           <tr>
-            <td><h4 class="scoreCorrect">Correct: </h4></td>
-            <td><h4 class="scoreWrong">Wrong: </h4></td>
+            <td><h4>Correct: <span class="scoreCorrect">0</span></h4></td>
+            <td><h4>Wrong: <span class="scoreWrong">0</span></h4></td>
           </tr>
         </table>
       </section>
@@ -37,7 +38,13 @@
     <main>
       <!-- Video section-->
       <section>
-        <div class="video"></div>
+        <div id="video">
+          <!--video tag-->
+          <iframe id='defaultVideo' width="560" height="315" 
+          src="https://www.youtube.com/embed/rzLIUgnKY40?si=cflZOP5RBIlmphE-" title="Default Video" frameborder="0" 
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+          </iframe>
+        </div>
       </section>
 
       <!-- start button-->
