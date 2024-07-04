@@ -13,23 +13,23 @@
       <section class="score">
         <table>
           <tr>
-            <th><div>Score:</div></th>
+            <th><h2 class='scoreTitle'>Score:</h2></th>
           </tr>
       
           <tr>
-            <td><div>Correct: </div></td>
-            <td><div>Wrong: </div></td>
+            <td><h4 class="scoreCorrect">Correct: </h4></td>
+            <td><h4 class="scoreWrong">Wrong: </h4></td>
           </tr>
         </table>
       </section>
 
       <section class="timeLeft">
-        <div>Time Left: </div>
+        <h2>Time Left: </h2>
       </section>
 
       <!--back button-->
       <div class="back">
-        <input type="button" value="Go Back to Start!"/>
+        <input class='backButton' type="button" value="Go Back to Start!"/>
       </div>
     </header>
 
@@ -48,27 +48,30 @@
 
     <!-- questions will go inside of the footer element. They will be shown after the video is finished-->
     <footer>
-      <div>
+      <div class="question-box">
         <form>
           <label>Who made music??</label></br>
 
           <label>
             <input type="radio" name="question" value="This guy??">
-            Music
-        </label><br>
-        <label>
+            Weeee
+          </label><br>
+          <label>
             <input type="radio" name="question" value="Maybe this guy????">
-            Movies
-        </label><br>
-        <label>
+            WOOO
+          </label><br>
+          <label>
             <input type="radio" name="question" value="What about him????">
-            Sports
-        </label><br>
-        <label>
+            YeAH!!!
+          </label><br>
+          <label>
             <input type="radio" name="question" value="HI!!!!! :D">
-            Games
-        </label>
+            :DDDD
+          </label>
         </form>
+        
+        <!--Submit button for the questions-->
+        <input type="submit" value="Submit"/>
       </div>
     </footer>
   </body>
