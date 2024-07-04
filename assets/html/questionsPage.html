@@ -49,32 +49,37 @@
     <!-- questions will go inside of the footer element. They will be shown after the video is finished-->
     <footer>
       <div class="question-box">
-        <form>
-          <label>Who made music??</label></br>
+        <form class="questions">
+        
+          <label id="selectionTitle">Who made music??</label></br>
 
           <label>
-            <input type="radio" name="question" value="This guy??">
-            Weeee
+            <input type="radio" name="question" value="0">
+            <span id="selection1">Weeee</span>
           </label><br>
+
           <label>
-            <input type="radio" name="question" value="Maybe this guy????">
-            WOOO
+            <input type="radio" name="question" value="1">
+            <span id="selection2">WOOO</span>
           </label><br>
+          
           <label>
-            <input type="radio" name="question" value="What about him????">
-            YeAH!!!
+            <input type="radio" name="question" value="2">
+            <span id="selection3">YeAH!!!</span>
           </label><br>
+
           <label>
-            <input type="radio" name="question" value="HI!!!!! :D">
-            :DDDD
+            <input type="radio" name="question" value="3">
+            <span id="selection4">:DDDD</span>
           </label>
+
         </form>
         
         <!--Submit button for the questions-->
-        <input type="submit" value="Submit"/>
+        <input id='submit' type="submit" value="Submit"/>
       </div>
     </footer>
   </body>
 
-  <script src="./assets/js/questionsScript.js"></script>
+  <script src="../js/questionsScript.js"></script>
 </html>
