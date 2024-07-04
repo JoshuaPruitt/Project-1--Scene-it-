@@ -1,0 +1,43 @@
+html {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border: 5px solid red;
+    margin-bottom: 30px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.score {
+    padding: 20px;
+}
+
+.timeLeft {
+    padding: 20px;
+}
+
+.back {
+    padding: 20px;
+}
+
+.video {
+    min-width: 50vh;
+    min-height: 30vh;
+    background-color: rgb(226, 150, 150);
+}
+
+.start {
+    display: flex;
+    margin: 20px;
+    justify-content: center;
+    font-size: 30px;
+}

@@ -3,24 +3,75 @@
   <head>
     <meta charset="UTF-8" />
     <title>Questions</title>
+    <link rel="stylesheet" href="../css/questions.css"/>
   </head>
 
   <body>
     <!-- header is for the score, time left, and the back button-->
-    <header></header>
+    <header>
+      <!--Score-->
+      <section class="score">
+        <table>
+          <tr>
+            <th><div>Score:</div></th>
+          </tr>
+      
+          <tr>
+            <td><div>Correct: </div></td>
+            <td><div>Wrong: </div></td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="timeLeft">
+        <div>Time Left: </div>
+      </section>
+
+      <!--back button-->
+      <div class="back">
+        <input type="button" value="Go Back to Start!"/>
+      </div>
+    </header>
 
     <!-- the start button and the video will be contained inside of the main element -->
     <main>
       <!-- Video section-->
-      <section></section>
+      <section>
+        <div class="video"></div>
+      </section>
 
       <!-- start button-->
-      <section></section>
+      <div class="start">
+        <input type="button" value="Start!"/>
+      </div>
     </main>
 
     <!-- questions will go inside of the footer element. They will be shown after the video is finished-->
     <footer>
-      <div></div>
+      <div>
+        <form>
+          <label>Who made music??</label></br>
+
+          <label>
+            <input type="radio" name="question" value="This guy??">
+            Music
+        </label><br>
+        <label>
+            <input type="radio" name="question" value="Maybe this guy????">
+            Movies
+        </label><br>
+        <label>
+            <input type="radio" name="question" value="What about him????">
+            Sports
+        </label><br>
+        <label>
+            <input type="radio" name="question" value="HI!!!!! :D">
+            Games
+        </label>
+        </form>
+      </div>
     </footer>
   </body>
+
+  <script src="./assets/js/questionsScript.js"></script>
 </html>
