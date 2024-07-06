@@ -5,8 +5,8 @@
 
 //Contained within header
     //scoreCorrect and scoreWrong will change the number in both to update the score
-const scoreCorrrect = document.getElementsByClassName('scoreCorrect');
-const scoreWrong = document.getElementsByClassName('scoreWrong')
+const scoreCorrrect = document.getElementById('scoreCorrect');
+const scoreWrong = document.getElementById('scoreWrong')
 const timeLeft = document.getElementsByClassName('timeLeft');
 const backButton = document.getElementsByClassName('backButton');
 
@@ -28,8 +28,14 @@ const selection2Label = document.getElementById('selection2');
 const selection3Label = document.getElementById('selection3');
 const selection4Label = document.getElementById('selection4');
 
-//q keeps track of which question we are on
+//Selection value
+let selection = document.getElementsByName('question');
+
+//q keeps track of which question we are on. right and wrong keeps check of the score
 var q = 0;
+var right = 0;
+var wrong = 0;
+// let score = {wrong: 0, right: 0}
 
 //Test category
 let testObj = {
@@ -51,7 +57,7 @@ let testObj = {
 //data read and write to storage
 
 
-function displayQuestions(){
+function displayInformation(){
     //display questions
     selectionLabel.innerHTML = testObj.questions[q].questiontext;
     selection1Label.innerHTML = testObj.questions[q].q1;
@@ -59,18 +65,16 @@ function displayQuestions(){
     selection3Label.innerHTML = testObj.questions[q].q3;
     selection4Label.innerHTML = testObj.questions[q].q4;
 
+    //display New Score
+    scoreCorrrect.innerHTML = right;
+    scoreWrong.innerHTML = wrong;
+
     //remove video and add new one. If statement is for if there is a default video on the screen and we want to replace that. (will likely be removed as there will be no default video later)
     if (q == 0){
-        //remove the default video
-        // videoBox.removeChild(defaultVideo)
-
         //add new video and append it
         videoBox.innerHTML = testObj.Video[q];
         console.log('replaced default video')
-
-    } else
-        
-
+    };
     // add 1 to q to go to next question
     q++
 
@@ -78,8 +82,34 @@ function displayQuestions(){
     return q
 }
 
+//calculate if a question is right or wrong
+function calculateWrongRight (){
+
+    //checks to see if any of the values are checked
+    for (let x=0; x < selection.length; x++){
+        //.checked will check if a selection box has been checked
+        if(selection[x].checked){
+            
+            //checks if the question answer and the selection equal the same value. If so then display correct
+            if (testObj.questions[q].questionAnswer == selection[x].value){
+                //add one to right
+                // score.right++
+                right++
+            } else {
+                // score.wrong++
+                wrong++
+            }
+        }
+    }
+
+    return
+};
+
 submitId.addEventListener('click', function(event) {
     event.preventDefault();
+
+    //calculate if the question is right or wrong
+    calculateWrongRight()
 
     //set the inner html to have nothing in it
     selectionLabel.innerHTML = '';
@@ -87,8 +117,17 @@ submitId.addEventListener('click', function(event) {
     selection2Label.innerHTML = '';
     selection3Label.innerHTML = '';
     selection4Label.innerHTML = '';
+    scoreCorrrect.innerHTML = '';
+    scoreWrong.innerHTML = '';
 
-    //display the new questions
-    displayQuestions()
+
+
+    //display the new questions and score
+    console.log(`You got ${right} questions right` )
+    console.log(`You got ${wrong} questions wrong` )
+    console.log('Question= '+q)
+    displayInformation()
+
+
 });
 
