@@ -55,7 +55,7 @@ body header section {
     flex-direction: column;
 }
 
-#video {
+#videoBox {
     /* aligning video to the center of the box */
     display: flex;
     justify-content: center;
@@ -63,5 +63,11 @@ body header section {
     /* setting the boxes minimum width and height */
     min-width: 50vh;
     min-height: 30vh;
-    background-color: rgb(226, 150, 150);
+    background-color: rgb(149, 193, 237);
+}
+
+#contidionalText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

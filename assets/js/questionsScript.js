@@ -3,6 +3,8 @@
 // First itll show a video. Once the video is finished a player can press the start button. The video will disapear, a timer will start, and questions will append to the page.
 // if the timer finishes before the questions have been answered then a fail will display onto the screen. Then it will go to the next question
 
+//bug within code. Currently the default questions are overwriting the new ones This can be solved by linking the display code to the start button instead of displaying after submit.
+
 //Contained within header
     //scoreCorrect and scoreWrong will change the number in both to update the score
 const scoreCorrrect = document.getElementById('scoreCorrect');
@@ -11,7 +13,8 @@ const timeLeft = document.querySelector('timeLeft');
 const backButton = document.querySelector('backButton');
 
 //Contained within main section
-const videoBox = document.getElementById('video');
+const videoBox = document.getElementById('videoBox');
+const video = document.getElementById('video')
     //defaultVideo will likely be removed later
 const defaultVideo = document.getElementById('defaultVideo')
 const startButton = document.querySelector('start');
@@ -34,6 +37,10 @@ let selection = document.getElementsByName('question');
 var q = 0;
 var right = 0;
 var wrong = 0;
+
+//correct and inncorect message 
+let correctText = 'You got a question right! Good Job!!';
+let inncorrectText = 'Im sorry, you got this question wrong';
 
 //Test category
 let testObj = {
@@ -64,16 +71,13 @@ function displayInformation(){
     selection2Label.innerHTML = testObj.questions[q].q2;
     selection3Label.innerHTML = testObj.questions[q].q3;
     selection4Label.innerHTML = testObj.questions[q].q4;
-    
     //remove video and add new one. If statement is for if there is a default video on the screen and we want to replace that. (will likely be removed as there will be no default video later)
-    if (q == 0){
-        //add new video and append it
-        videoBox.innerHTML = testObj.Video[q];
-        console.log('replaced default video')
-    };
+    //add new video and append it
+    video.innerHTML = testObj.Video[q];
+    console.log('replaced video')
+  
     // add 1 to q to go to next question
     q++
-
     //return q ro save the increment by 1
     return q
 }
@@ -93,11 +97,11 @@ function calculateWrongRight (){
                 if (testObj.questions[q].questionAnswer == selection[x].value){
                     //add one to right
                     right++
-                    message = 'You got a question right! Good Job!!'
+                    message = correctText
                     winFailDisplay(message)
                 } else {
                     wrong++
-                    message = 'Im sorry, you got this question wrong'
+                    message = inncorrectText
                     winFailDisplay(message)
                 }
             //if theres no more questions then end game
@@ -110,10 +114,18 @@ function calculateWrongRight (){
 };
 
 function winFailDisplay(message){
+    video.style.visibility = 'hidden'
     contidionText.innerHTML = message;
+    
+    if(message == correctText){
+        videoBox.style.backgroundColor = "#6BED8D";
+    } else {
+        videoBox.style.backgroundColor = "#E29696";
+    }
 
     let conditonTimer = setTimeout(function(){
         contidionText.innerHTML = "";
+        video.style.visibility = 'visible'
         clearInterval(conditonTimer)
     }, 1000 * 3)
 }

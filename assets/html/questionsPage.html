@@ -25,7 +25,7 @@
       </section>
 
       <section class="timeLeft">
-        <h2>Time Left: </h2>
+        <h2>Time Left: <span class="timeText"></span></h2>
       </section>
 
       <!--back button-->
@@ -38,15 +38,18 @@
     <main>
       <!-- Video section-->
       <section>
-        <div id="video">
+        <div id="videoBox">
+          <h1><span id='conditionalText'></span></h1>
           <!--video tag-->
-          <iframe id='defaultVideo' width="560" height="315" 
-          src="https://www.youtube.com/embed/rzLIUgnKY40?si=cflZOP5RBIlmphE-" title="Default Video" frameborder="0" 
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-          </iframe>
+          <section id="video">
+            <iframe id='defaultVideo' width="560" height="315" 
+            src="https://www.youtube.com/embed/rzLIUgnKY40?si=cflZOP5RBIlmphE-" title="Default Video" frameborder="0" 
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            </iframe>
+          </section>
         </div>
+
         
-        <h1><span id='conditionalText'></span></h1>
       </section>
 
       <!-- start button-->
