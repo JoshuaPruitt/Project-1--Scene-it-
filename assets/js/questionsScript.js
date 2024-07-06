@@ -35,7 +35,6 @@ let selection = document.getElementsByName('question');
 var q = 0;
 var right = 0;
 var wrong = 0;
-// let score = {wrong: 0, right: 0}
 
 //Test category
 let testObj = {
@@ -58,17 +57,17 @@ let testObj = {
 
 
 function displayInformation(){
+    //display the Score
+    scoreCorrrect.innerHTML = right;
+    scoreWrong.innerHTML = wrong;
+
     //display questions
     selectionLabel.innerHTML = testObj.questions[q].questiontext;
     selection1Label.innerHTML = testObj.questions[q].q1;
     selection2Label.innerHTML = testObj.questions[q].q2;
     selection3Label.innerHTML = testObj.questions[q].q3;
     selection4Label.innerHTML = testObj.questions[q].q4;
-
-    //display New Score
-    scoreCorrrect.innerHTML = right;
-    scoreWrong.innerHTML = wrong;
-
+    
     //remove video and add new one. If statement is for if there is a default video on the screen and we want to replace that. (will likely be removed as there will be no default video later)
     if (q == 0){
         //add new video and append it
@@ -90,19 +89,27 @@ function calculateWrongRight (){
         //.checked will check if a selection box has been checked
         if(selection[x].checked){
             
-            //checks if the question answer and the selection equal the same value. If so then display correct
-            if (testObj.questions[q].questionAnswer == selection[x].value){
-                //add one to right
-                // score.right++
-                right++
+            //as long as there are questions then continue.
+            if (q < testObj.questions.length){
+                //checks if the question answer and the selection equal the same value. If so then display correct
+                if (testObj.questions[q].questionAnswer == selection[x].value){
+                    //add one to right
+                    right++
+                } else {
+                    wrong++
+                }
+            //if theres no more questions then end game
             } else {
-                // score.wrong++
-                wrong++
+                endGame()
             }
         }
     }
-
     return
+};
+
+//when there are no more questions then end the game
+function endGame(){
+    console.log("no more questions!")
 };
 
 submitId.addEventListener('click', function(event) {
@@ -120,12 +127,7 @@ submitId.addEventListener('click', function(event) {
     scoreCorrrect.innerHTML = '';
     scoreWrong.innerHTML = '';
 
-
-
     //display the new questions and score
-    console.log(`You got ${right} questions right` )
-    console.log(`You got ${wrong} questions wrong` )
-    console.log('Question= '+q)
     displayInformation()
 
 
