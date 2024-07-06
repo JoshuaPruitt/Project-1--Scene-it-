@@ -7,19 +7,18 @@
     //scoreCorrect and scoreWrong will change the number in both to update the score
 const scoreCorrrect = document.getElementById('scoreCorrect');
 const scoreWrong = document.getElementById('scoreWrong')
-const timeLeft = document.getElementsByClassName('timeLeft');
-const backButton = document.getElementsByClassName('backButton');
+const timeLeft = document.querySelector('timeLeft');
+const backButton = document.querySelector('backButton');
 
 //Contained within main section
 const videoBox = document.getElementById('video');
     //defaultVideo will likely be removed later
 const defaultVideo = document.getElementById('defaultVideo')
-const startButton = document.getElementsByClassName('start');
+const startButton = document.querySelector('start');
+const contidionText = document.getElementById('conditionalText')
 
 //Contained within footer
-const questionsLoc = document.getElementsByClassName('questions');
 const submitId = document.getElementById('submit');
-const label = document.getElementsByTagName('label')
 
 //Selections for questions
 const selectionLabel = document.getElementById('selectionTitle')
@@ -53,8 +52,6 @@ let testObj = {
     ]  
 };
 
-//data read and write to storage
-
 
 function displayInformation(){
     //display the Score
@@ -83,6 +80,7 @@ function displayInformation(){
 
 //calculate if a question is right or wrong
 function calculateWrongRight (){
+    let message;
 
     //checks to see if any of the values are checked
     for (let x=0; x < selection.length; x++){
@@ -95,8 +93,12 @@ function calculateWrongRight (){
                 if (testObj.questions[q].questionAnswer == selection[x].value){
                     //add one to right
                     right++
+                    message = 'You got a question right! Good Job!!'
+                    winFailDisplay(message)
                 } else {
                     wrong++
+                    message = 'Im sorry, you got this question wrong'
+                    winFailDisplay(message)
                 }
             //if theres no more questions then end game
             } else {
@@ -107,7 +109,16 @@ function calculateWrongRight (){
     return
 };
 
-//when there are no more questions then end the game
+function winFailDisplay(message){
+    contidionText.innerHTML = message;
+
+    let conditonTimer = setTimeout(function(){
+        contidionText.innerHTML = "";
+        clearInterval(conditonTimer)
+    }, 1000 * 3)
+}
+
+//when there are no more questions then end the game. Write new data to storage. 
 function endGame(){
     console.log("no more questions!")
 };
