@@ -10,7 +10,7 @@
 const scoreCorrrect = document.getElementById('scoreCorrect');
 const scoreWrong = document.getElementById('scoreWrong')
 const timeLeft = document.querySelector('timeLeft');
-const backButton = document.querySelector('backButton');
+const backButton = document.getElementById('backButton');
 
 //Contained within main section
 const videoBox = document.getElementById('videoBox');
@@ -47,7 +47,7 @@ let inncorrectText = 'Im sorry, you got this question wrong';
 let testObj = {
     //add your video tags here when you create your seperate category. The code switches out the video for the video that q represents. If q = 0 then q will pull up the first video, so on and so forth.
     Video: ['<iframe width="560" height="315" src="https://www.youtube.com/embed/7AvXEmQU69Q?si=MnfVvYsgfmm98UFA&amp;controls=0" title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>', 
-
+    
     ],
     //this stores all the questions for a category
     questions: [
@@ -150,12 +150,22 @@ function init(){
     questions.style.visibility = 'hidden'
     submitId.style.visibility = 'hidden'
 
-    //if the page has just started then set the starting information
+    //if the page has just started then set the starting information. Take information from starting page and change object to = that starting information
     if(q==0){
-        video.innerHTML = testObj.Video[q];
+        // video.innerHTML = testObj.Video[q];
 
     }
 };
+
+//redirects the page
+const redirectPage = function(url){
+    location.assign(url)
+};
+
+//the back button takes you back to the first page
+backButton.addEventListener('click', function(event){
+    redirectPage('./index.html')
+});
 
 startButton.addEventListener('click', function(event){
     event.preventDefault()
@@ -182,9 +192,6 @@ submitId.addEventListener('click', function(event) {
     selection4Label.innerHTML = '';
     scoreCorrrect.innerHTML = '';
     scoreWrong.innerHTML = '';
-
-    // //display the new questions and score
-    // displayInformation()
 
     // add 1 to q to go to next question
     q++
