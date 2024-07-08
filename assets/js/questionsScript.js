@@ -17,10 +17,11 @@ const videoBox = document.getElementById('videoBox');
 const video = document.getElementById('video')
     //defaultVideo will likely be removed later
 const defaultVideo = document.getElementById('defaultVideo')
-const startButton = document.querySelector('start');
+const startButton = document.getElementById('startId');
 const contidionText = document.getElementById('conditionalText')
 
 //Contained within footer
+const questions = document.getElementById('questions')
 const submitId = document.getElementById('submit');
 
 //Selections for questions
@@ -51,16 +52,21 @@ let testObj = {
     //this stores all the questions for a category
     questions: [
         //question text stores the question label. Question answer shows the correct answer. q1-q4 are the selection labels
-        {questiontext: 'This is question 1', questionAnswer: 0, q1: 'Hai!', q2: "hellooo!", q3: 'greetings', q4: 'yipppee'},
-        {questiontext: 'This is question 2', questionAnswer: 1, q1: 'a', q2: "b", q3: 'c', q4: 'd'}, 
-        {questiontext: 'This is question 3', questionAnswer: 2, q1: 'b', q2: "c", q3: 'd', q4: 'a'}, 
-        {questiontext: 'This is question 4', questionAnswer: 3, q1: 'c!', q2: "d", q3: 'a', q4: 'b'},
-        {questiontext: 'This is question 5', questionAnswer: 0, q1: 'd!', q2: "a", q3: 'b', q4: 'c'},
+        {questiontext: 'This is question 1', questionAnswer: 1, q1: 'Hai!', q2: "hellooo!", q3: 'greetings', q4: 'yipppee'},
+        {questiontext: 'This is question 2', questionAnswer: 2, q1: 'a', q2: "b", q3: 'c', q4: 'd'}, 
+        {questiontext: 'This is question 3', questionAnswer: 3, q1: 'b', q2: "c", q3: 'd', q4: 'a'}, 
+        {questiontext: 'This is question 4', questionAnswer: 4, q1: 'c!', q2: "d", q3: 'a', q4: 'b'},
+        {questiontext: 'This is question 5', questionAnswer: 1, q1: 'd!', q2: "a", q3: 'b', q4: 'c'},
     ]  
 };
 
 
 function displayInformation(){
+    //set the questions and submit button to visible and set the start button to invisible
+    questions.style.visibility = 'visible'
+    submitId.style.visibility = 'visible'
+    startButton.style.visibility = 'hidden'
+
     //display the Score
     scoreCorrrect.innerHTML = right;
     scoreWrong.innerHTML = wrong;
@@ -75,11 +81,7 @@ function displayInformation(){
     //add new video and append it
     video.innerHTML = testObj.Video[q];
     console.log('replaced video')
-  
-    // add 1 to q to go to next question
-    q++
-    //return q ro save the increment by 1
-    return q
+
 }
 
 //calculate if a question is right or wrong
@@ -91,22 +93,19 @@ function calculateWrongRight (){
         //.checked will check if a selection box has been checked
         if(selection[x].checked){
             
-            //as long as there are questions then continue.
-            if (q < testObj.questions.length){
-                //checks if the question answer and the selection equal the same value. If so then display correct
-                if (testObj.questions[q].questionAnswer == selection[x].value){
-                    //add one to right
-                    right++
-                    message = correctText
-                    winFailDisplay(message)
-                } else {
-                    wrong++
-                    message = inncorrectText
-                    winFailDisplay(message)
-                }
-            //if theres no more questions then end game
+            console.log('Question Answer: '+ testObj.questions[q].questionAnswer)
+            console.log('Selection Value: '+ selection[x].value)
+
+            //checks if the question answer and the selection equal the same value. If so then display correct
+            if (testObj.questions[q].questionAnswer == selection[x].value){
+                //add one to right
+                right++
+                message = correctText
+                winFailDisplay(message)
             } else {
-                endGame()
+                wrong++
+                message = inncorrectText
+                winFailDisplay(message)
             }
         }
     }
@@ -125,18 +124,52 @@ function winFailDisplay(message){
 
     let conditonTimer = setTimeout(function(){
         contidionText.innerHTML = "";
+        //set the video back to visible and set the background color back to normal
         video.style.visibility = 'visible'
+        videoBox.style.backgroundColor = '#95C1ED'
         clearInterval(conditonTimer)
+
+        startButton.style.visibility = 'visible'
+
+        //if theres no more questions then end game
+        if (q >= testObj.questions.length){
+            endGame()
+        }
     }, 1000 * 3)
-}
+};
 
 //when there are no more questions then end the game. Write new data to storage. 
 function endGame(){
     console.log("no more questions!")
 };
 
+//initialize the page on startup. 
+function init(){
+    
+    //on startup hide the questions
+    questions.style.visibility = 'hidden'
+    submitId.style.visibility = 'hidden'
+
+    //if the page has just started then set the starting information
+    if(q==0){
+        video.innerHTML = testObj.Video[q];
+
+    }
+};
+
+startButton.addEventListener('click', function(event){
+    event.preventDefault()
+
+    video.style.visibility = 'hidden'
+
+    displayInformation()
+});
+
 submitId.addEventListener('click', function(event) {
     event.preventDefault();
+    console.log('Question No: ' + q)
+    //set the submit button to hidden so that it cannot be pressed mutiple times
+    init()
 
     //calculate if the question is right or wrong
     calculateWrongRight()
@@ -150,9 +183,13 @@ submitId.addEventListener('click', function(event) {
     scoreCorrrect.innerHTML = '';
     scoreWrong.innerHTML = '';
 
-    //display the new questions and score
-    displayInformation()
+    // //display the new questions and score
+    // displayInformation()
 
-
+    // add 1 to q to go to next question
+    q++
 });
+
+//run on startup
+init()
 
