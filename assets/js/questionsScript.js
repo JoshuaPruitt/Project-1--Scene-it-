@@ -67,6 +67,10 @@ function displayInformation(){
     submitId.style.visibility = 'visible'
     startButton.style.visibility = 'hidden'
 
+    //make scores blank before adding information
+    scoreCorrrect.innerHTML = '';
+    scoreWrong.innerHTML = '';
+
     //display the Score
     scoreCorrrect.innerHTML = right;
     scoreWrong.innerHTML = wrong;
@@ -123,6 +127,11 @@ function winFailDisplay(message){
     }
 
     let conditonTimer = setTimeout(function(){
+        //if theres no more questions then end game
+        if (q >= testObj.questions.length){
+            endGame()
+        }
+
         contidionText.innerHTML = "";
         //set the video back to visible and set the background color back to normal
         video.style.visibility = 'visible'
@@ -130,22 +139,22 @@ function winFailDisplay(message){
         clearInterval(conditonTimer)
 
         startButton.style.visibility = 'visible'
-
-        //if theres no more questions then end game
-        if (q >= testObj.questions.length){
-            endGame()
-        }
     }, 1000 * 3)
 };
 
 //when there are no more questions then end the game. Write new data to storage. 
 function endGame(){
     console.log("no more questions!")
+
+    //store data to be pulled on next page
+    let scoreData = [right, wrong]
+    localStorage.setItem('finalScores', JSON.stringify(scoreData));
+    //redirect page
+    redirectPage('highscorePage.html')
 };
 
 //initialize the page on startup. 
 function init(){
-    
     //on startup hide the questions
     questions.style.visibility = 'hidden'
     submitId.style.visibility = 'hidden'
@@ -193,6 +202,10 @@ submitId.addEventListener('click', function(event) {
     scoreCorrrect.innerHTML = '';
     scoreWrong.innerHTML = '';
 
+    //Re-display the Score
+    scoreCorrrect.innerHTML = right;
+    scoreWrong.innerHTML = wrong;
+    
     // add 1 to q to go to next question
     q++
 });
