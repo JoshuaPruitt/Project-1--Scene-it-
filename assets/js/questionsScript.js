@@ -3,7 +3,7 @@
 // First itll show a video. Once the video is finished a player can press the start button. The video will disapear, a timer will start, and questions will append to the page.
 // if the timer finishes before the questions have been answered then a fail will display onto the screen. Then it will go to the next question
 
-//bug within code. Currently the default questions are overwriting the new ones This can be solved by linking the display code to the start button instead of displaying after submit.
+//Local storage connections still must be made
 
 //Contained within header
     //scoreCorrect and scoreWrong will change the number in both to update the score
@@ -38,13 +38,14 @@ let selection = document.getElementsByName('question');
 var q = 0;
 var right = 0;
 var wrong = 0;
+var selectionNo;
 
 //correct and inncorect message 
 let correctText = 'You got a question right! Good Job!!';
 let inncorrectText = 'Im sorry, you got this question wrong';
 
 //Test category
-let testObj = {
+let mainObj = {
     //add your video tags here when you create your seperate category. The code switches out the video for the video that q represents. If q = 0 then q will pull up the first video, so on and so forth.
     Video: ['<iframe width="560" height="315" src="https://www.youtube.com/embed/7AvXEmQU69Q?si=MnfVvYsgfmm98UFA&amp;controls=0" title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>', 
     
@@ -76,17 +77,16 @@ function displayInformation(){
     scoreWrong.innerHTML = wrong;
 
     //display questions
-    selectionLabel.innerHTML = testObj.questions[q].questiontext;
-    selection1Label.innerHTML = testObj.questions[q].q1;
-    selection2Label.innerHTML = testObj.questions[q].q2;
-    selection3Label.innerHTML = testObj.questions[q].q3;
-    selection4Label.innerHTML = testObj.questions[q].q4;
+    selectionLabel.innerHTML = mainObj.questions[q].questiontext;
+    selection1Label.innerHTML = mainObj.questions[q].q1;
+    selection2Label.innerHTML = mainObj.questions[q].q2;
+    selection3Label.innerHTML = mainObj.questions[q].q3;
+    selection4Label.innerHTML = mainObj.questions[q].q4;
     //remove video and add new one. If statement is for if there is a default video on the screen and we want to replace that. (will likely be removed as there will be no default video later)
     //add new video and append it
-    video.innerHTML = testObj.Video[q];
+    video.innerHTML = mainObj.Video[q];
     console.log('replaced video')
-
-}
+};
 
 //calculate if a question is right or wrong
 function calculateWrongRight (){
@@ -97,11 +97,11 @@ function calculateWrongRight (){
         //.checked will check if a selection box has been checked
         if(selection[x].checked){
             
-            console.log('Question Answer: '+ testObj.questions[q].questionAnswer)
+            console.log('Question Answer: '+ mainObj.questions[q].questionAnswer)
             console.log('Selection Value: '+ selection[x].value)
 
             //checks if the question answer and the selection equal the same value. If so then display correct
-            if (testObj.questions[q].questionAnswer == selection[x].value){
+            if (mainObj.questions[q].questionAnswer == selection[x].value){
                 //add one to right
                 right++
                 message = correctText
@@ -128,7 +128,7 @@ function winFailDisplay(message){
 
     let conditonTimer = setTimeout(function(){
         //if theres no more questions then end game
-        if (q >= testObj.questions.length){
+        if (q >= mainObj.questions.length){
             endGame()
         }
 
@@ -144,10 +144,8 @@ function winFailDisplay(message){
 
 //when there are no more questions then end the game. Write new data to storage. 
 function endGame(){
-    console.log("no more questions!")
-
     //store data to be pulled on next page
-    let scoreData = [right, wrong]
+    let scoreData = {correct:right, incorrect:wrong, testNo:selectionChoice}
     localStorage.setItem('finalScores', JSON.stringify(scoreData));
     //redirect page
     redirectPage('highscorePage.html')
@@ -160,10 +158,12 @@ function init(){
     submitId.style.visibility = 'hidden'
 
     //if the page has just started then set the starting information. Take information from starting page and change object to = that starting information
-    if(q==0){
-        // video.innerHTML = testObj.Video[q];
+    if(JSON.parse(localStorage.getItem('selectionInfo')) !== null){
 
+        let unseperatedObj = JSON.parse(localStorage.getItem('selectionInfo'))
+        selectionChoice = unseperatedObj
     }
+    return
 };
 
 //redirects the page
@@ -186,7 +186,6 @@ startButton.addEventListener('click', function(event){
 
 submitId.addEventListener('click', function(event) {
     event.preventDefault();
-    console.log('Question No: ' + q)
     //set the submit button to hidden so that it cannot be pressed mutiple times
     init()
 
