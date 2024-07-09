@@ -1,39 +1,73 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Highscore</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <title>Highscore</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <style>
+    /* Additional custom styles */
+    body {
+      background-color: #2006c7; /* Light gray background */
+      padding: 20px;
+    }
+    main, aside {
+      background-color: #ffffff; /* White background for main and aside */
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+    }
+  </style>
+</head>
 
-  <body>
-    <!-- this will contain the victory message, The player score, and the credits for the team-->
-    <main>
-      <!--victory/losing message-->
+<body>
+  <div class="container">
+    <main class="text-center">
+      <!-- Victory message -->
       <div>
         <h2>Victory message</h2>
+        <p>Your victory message goes here</p>
       </div>
 
-      <!--player score-->
-      <section></section>
+      <!-- Player score -->
+      <section>
+        <h3>Player Score</h3>
+        <p>Score: 1000</p> <!-- Example score -->
+      </section>
 
-      <!--Credits-->
-      <section></section>
+      <!-- Credits -->
+      <section>
+        <h3>Credits</h3>
+        <p>Game created by Team XYZ</p>
+      </section>
     </main>
 
-    <!-- this will contain the highscore title and section and an input box to put your name onto the list-->
-    <aside>
-      <!--highscore title-->
+    <aside class="text-center">
+      <!-- Highscore title -->
       <div>
         <h2>Highscores</h2>
       </div>
 
-      <!--highscores-->
-      <section></section>
+      <!-- Highscores section -->
+      <section>
+        <h3>Top Scores</h3>
+        <ul class="list-unstyled">
+          <li>Player 1 - 1500</li>
+          <li>Player 2 - 1200</li>
+          <li>Player 3 - 1100</li>
+        </ul>
+      </section>
 
-      <!--Start Again button-->
-      <div></div>
+      <!-- Start Again button -->
+      <div>
+        <button class="btn btn-primary">Start Again</button>
+      </div>
     </aside>
-  </body>
+  </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
   <script src="./assets/js/highscorePage.js"></script>
+</body>
 </html>
