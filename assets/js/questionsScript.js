@@ -45,21 +45,31 @@ let correctText = 'You got a question right! Good Job!!';
 let inncorrectText = 'Im sorry, you got this question wrong';
 
 //Test category
-let mainObj = {
+
+
+let Movies = {
     //add your video tags here when you create your seperate category. The code switches out the video for the video that q represents. If q = 0 then q will pull up the first video, so on and so forth.
-    Video: ['<iframe width="560" height="315" src="https://www.youtube.com/embed/7AvXEmQU69Q?si=MnfVvYsgfmm98UFA&amp;controls=0" title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>', 
+    Video: ['<iframe width="560" height="315" src="https://www.youtube.com/embed/2GCzyZexnNE?si=7MQora333xfr2lv7" title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>' ,
+        '<iframe width="560" height="315" src="https://www.youtube.com/embed/sU4T_9pxpbk?si=NEvprkObDUYo8r4F" title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>' ,
+        '<iframe width="560" height="315" src="https://www.youtube.com/embed/cVsyJvxX48A?si=6joeYDJIADs-sun0" title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>' ,
+        '<iframe width="560" height="315" src="https://www.youtube.com/embed/v_DQtUK-FXg?si=LgCnNkYN9tQftBKY" title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>' ,
+        '<iframe width="560" height="315" src="https://www.youtube.com/embed/nwPMKcYEkmw?si=poi1KH42uBVh9PQH" title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'
+
+
     
     ],
     //this stores all the questions for a category
     questions: [
         //question text stores the question label. Question answer shows the correct answer. q1-q4 are the selection labels
-        {questiontext: 'This is question 1', questionAnswer: 1, q1: 'Hai!', q2: "hellooo!", q3: 'greetings', q4: 'yipppee'},
-        {questiontext: 'This is question 2', questionAnswer: 2, q1: 'a', q2: "b", q3: 'c', q4: 'd'}, 
-        {questiontext: 'This is question 3', questionAnswer: 3, q1: 'b', q2: "c", q3: 'd', q4: 'a'}, 
-        {questiontext: 'This is question 4', questionAnswer: 4, q1: 'c!', q2: "d", q3: 'a', q4: 'b'},
-        {questiontext: 'This is question 5', questionAnswer: 1, q1: 'd!', q2: "a", q3: 'b', q4: 'c'},
+        {questiontext: 'What color are the Dogs eyes?', questionAnswer: 1, q1: 'Brown', q2: "Blue", q3: 'Green', q4: 'Black'},
+        {questiontext: 'WHat did the guy want to borrow?', questionAnswer: 3, q1: 'Pencil', q2: "Tennis Racket", q3: 'Pen', q4: '$20'}, 
+        {questiontext: 'What color sweater was Mr Ribbon wearing?', questionAnswer: 3, q1: 'Brown', q2: "Red", q3: 'Blue', q4: 'Yellow'}, 
+        {questiontext: 'What is the Quantitatives name?>', questionAnswer: 2, q1: 'Yang', q2: "Jiang", q3: 'Bob', q4: 'Shawn'},
+        {questiontext: 'What color Rope does Russell Have on his backpack?', questionAnswer: 4, q1: 'Black', q2: "Brown", q3: 'Green', q4: 'Orange'},
+        
     ]  
 };
+
 
 
 function displayInformation(){
