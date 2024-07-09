@@ -40,7 +40,7 @@ let quizzes = [
             {questiontext: 'What color are the Dogs eyes?', questionAnswer: 1, q1: 'Brown', q2: "Blue", q3: 'Green', q4: 'Black'},
             {questiontext: 'WHat did the guy want to borrow?', questionAnswer: 3, q1: 'Pencil', q2: "Tennis Racket", q3: 'Pen', q4: '$20'}, 
             {questiontext: 'What color sweater was Mr Ribbon wearing?', questionAnswer: 3, q1: 'Brown', q2: "Red", q3: 'Blue', q4: 'Yellow'}, 
-            {questiontext: 'What is the Quantitatives name?>', questionAnswer: 2, q1: 'Yang', q2: "Jiang", q3: 'Bob', q4: 'Shawn'},
+            {questiontext: 'What is the Quantitatives name?', questionAnswer: 2, q1: 'Yang', q2: "Jiang", q3: 'Bob', q4: 'Shawn'},
             {questiontext: 'What color Rope does Russell Have on his backpack?', questionAnswer: 4, q1: 'Black', q2: "Brown", q3: 'Green', q4: 'Orange'},
         ]
     },
