@@ -160,8 +160,11 @@ function init(){
     //if the page has just started then set the starting information. Take information from starting page and change object to = that starting information
     if(JSON.parse(localStorage.getItem('selectionInfo')) !== null){
 
+        //grab the selection info (selec)
         let unseperatedObj = JSON.parse(localStorage.getItem('selectionInfo'))
+        let selectedQuiz = JSON.parse(localStorage.getItem('selectedQuiz'))
         selectionChoice = unseperatedObj
+        mainObj = selectedQuiz
     }
     return
 };
