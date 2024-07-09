@@ -61,6 +61,30 @@ let mainObj = {
     ]  
 };
 
+let games = {
+    //add your video tags here when you create your seperate category. The code switches out the video for the video that q represents. If q = 0 then q will pull up the first video, so on and so forth.
+    Image: [ img src='https://miro.medium.com/v2/resize:fit:640/format:webp/1*JDStDB63qk3XeWfOsGRp_w.png', 
+        //Q1 image
+        img src='https://i.pinimg.com/564x/88/78/47/887847f9b36cf9851f6a5b3c9652d7ab.jpg',
+        //Q2 image
+        img src='https://media.wired.com/photos/62e0301fb014c7f5985e3405/master/w_1920,c_limit/Minecraft-NFTs-Games.jpg',
+        //Q3 image
+        img src='https://m.media-amazon.com/images/I/71fig4TaulL._AC_UF1000,1000_QL80_.jpg',
+        //Q4 image
+        img src='https://www.militarytimes.com/resizer/qk5iK6khgLj4qgjP_BHe8nDuQrk=/1024x0/filters:format(png):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/archetype/2STHBP6WA5B27BSV73CPLMHFCY.png',
+        //Q5 image
+    
+],
+    //this stores all the questions for a category
+    questions: [
+        //question text stores the question label. Question answer shows the correct answer. q1-q4 are the selection labels
+        {What is his name: 'This is question 1', questionAnswer: 1, q1: 'Crash Bandicoot', q2: "Sonic The Hedgehog", q3: 'The Master Chief', q4: 'The Rat'},
+        {what is the name of this map: 'This is question 2', questionAnswer: 2, q1: 'The Silent Cartographer', q2: "Rainbow Road", q3: 'Unicorn Alley', q4: 'Insomnia Lane'}, 
+        {What video game is this from: 'This is question 3', questionAnswer: 3, q1: 'Super Mario', q2: "Minecraft", q3: 'Halo', q4: 'Chivalry 2'}, 
+        {What video game is this from: 'This is question 4', questionAnswer: 4, q1: 'Mad Pain', q2: 'Twisted Metal', q3: "GTA: Vice City", q4: 'GTA 5'},
+        {What is his name: 'This is question 5', questionAnswer: 1, q1: 'Sam', q2: 'Master Chief', q3: 'Captain Price', q4: "Ghost"},
+    ]  
+};
 
 function displayInformation(){
     //set the questions and submit button to visible and set the start button to invisible
