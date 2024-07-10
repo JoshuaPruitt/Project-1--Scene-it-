@@ -9,7 +9,7 @@
     //scoreCorrect and scoreWrong will change the number in both to update the score
 const scoreCorrrect = document.getElementById('scoreCorrect');
 const scoreWrong = document.getElementById('scoreWrong')
-const timeLeft = document.querySelector('timeLeft');
+const timeLeft = document.getElementById('timeText');
 const backButton = document.getElementById('backButton');
 
 //Contained within main section
@@ -41,9 +41,13 @@ var wrong = 0;
 var selectionNo;
 let firstTime = true;
 
+let qTime = 30
+
 //correct and inncorect message 
 let correctText = 'You got a question right! Good Job!!';
 let inncorrectText = 'Im sorry, you got this question wrong';
+
+let questionComplete = false
 
 //Test category
 let mainObj = {
@@ -95,7 +99,6 @@ function displayVideo(){
 
 //calculate if a question is right or wrong
 function calculateWrongRight (){
-    let message;
 
     //checks to see if any of the values are checked
     for (let x=0; x < selection.length; x++){
@@ -109,12 +112,10 @@ function calculateWrongRight (){
             if (mainObj.questions[q].questionAnswer == selection[x].value){
                 //add one to right
                 right++
-                message = correctText
-                winFailDisplay(message)
+                winFailDisplay(correctText)
             } else {
                 wrong++
-                message = inncorrectText
-                winFailDisplay(message)
+                winFailDisplay(inncorrectText)
             }
         }
     }
@@ -141,7 +142,7 @@ function winFailDisplay(message){
         //set the video back to visible and set the background color back to normal
         video.style.visibility = 'visible'
         videoBox.style.backgroundColor = '#95C1ED'
-        clearInterval(conditonTimer)
+        clearTimeout(conditonTimer)
 
         startButton.style.visibility = 'visible'
     }, 1000 * 3)
@@ -182,6 +183,35 @@ function init(){
     console.log('We are on question '+q)
 };
 
+function gameTimer(){
+    const windowTimer = () => {
+        timeLeft.innerHTML = qTime
+        qTime--
+        
+        if (questionComplete){
+            //clear the interval, set the timer back to 30 secconds and append the reset time to the page
+            clearInterval(timeee)
+            qTime = 30
+            timeLeft.innerHTML = qTime
+            questionComplete = false
+        }
+
+        if (qTime == 0){
+            //so that it still displays the current time
+            timeLeft.innerHTML = qTime
+            //once the time has gotten down to zero then clear the timer, give a fail message, and set the time back to 30
+            clearInterval(timeee)
+            qTime = 30
+
+            //call submit func to 
+            submitFunc()
+        }
+    }
+
+    let timeee = setInterval(windowTimer, 1000)
+    return 
+};
+
 //redirects the page
 const redirectPage = function(url){
     location.assign(url)
@@ -195,13 +225,22 @@ backButton.addEventListener('click', function(event){
 startButton.addEventListener('click', function(event){
     event.preventDefault()
 
+    //start the game timer
+    gameTimer()
+
     video.style.visibility = 'hidden'
 
     displayInformation()
 });
 
-submitId.addEventListener('click', function(event) {
-    event.preventDefault();
+submitId.addEventListener('click', submitFunc)
+    
+function submitFunc(event) {
+    // event.preventDefault();
+
+    //clear the time and set it back to 30 secconds
+    questionComplete = true;
+
     //set the submit button to hidden so that it cannot be pressed mutiple times
     init()
 
@@ -228,7 +267,7 @@ submitId.addEventListener('click', function(event) {
     displayVideo()
 
     return q
-});
+};
 
 //run on startup
 init()
