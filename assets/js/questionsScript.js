@@ -3,7 +3,7 @@
 // First itll show a video. Once the video is finished a player can press the start button. The video will disapear, a timer will start, and questions will append to the page.
 // if the timer finishes before the questions have been answered then a fail will display onto the screen. Then it will go to the next question
 
-//Local storage connections still must be made
+// The timer is a shoddy fix. Currently if the user is still selecting the correct answer then when the timer finishes it will read as a correct instead of an automatic fail. This can be solved by rewritting the order of operations.
 
 //Contained within header
     //scoreCorrect and scoreWrong will change the number in both to update the score
@@ -41,13 +41,20 @@ var wrong = 0;
 var selectionNo;
 let firstTime = true;
 
+//this is the time for each question. 30 is thirty seconds.
 let qTime = 30
 
 //correct and inncorect message 
 let correctText = 'You got a question right! Good Job!!';
 let inncorrectText = 'Im sorry, you got this question wrong';
 
+//manges whether a question has been completed or not
 let questionComplete = false
+
+//redirects the page
+const redirectPage = function(url){
+    location.assign(url)
+};
 
 //Test category
 let mainObj = {
@@ -66,7 +73,7 @@ let mainObj = {
     ]  
 };
 
-
+//displays all of the questions and buttons for the page
 function displayInformation(){
     //set the questions and submit button to visible and set the start button to invisible
     questions.style.visibility = 'visible'
@@ -122,6 +129,7 @@ function calculateWrongRight (){
     return
 };
 
+//displays a win or fail message depending on the answer
 function winFailDisplay(message){
     video.style.visibility = 'hidden'
     contidionText.innerHTML = message;
@@ -183,11 +191,13 @@ function init(){
     console.log('We are on question '+q)
 };
 
+//controls the timer for each question
 function gameTimer(){
     const windowTimer = () => {
         timeLeft.innerHTML = qTime
         qTime--
         
+        // this checks to see whether the question has been completed or not. If the question has been completed then reset the timer and clear it so that it is ready for the next question
         if (questionComplete){
             //clear the interval, set the timer back to 30 secconds and append the reset time to the page
             clearInterval(timeee)
@@ -212,32 +222,9 @@ function gameTimer(){
     return 
 };
 
-//redirects the page
-const redirectPage = function(url){
-    location.assign(url)
-};
-
-//the back button takes you back to the first page
-backButton.addEventListener('click', function(event){
-    redirectPage('./index.html')
-});
-
-startButton.addEventListener('click', function(event){
-    event.preventDefault()
-
-    //start the game timer
-    gameTimer()
-
-    video.style.visibility = 'hidden'
-
-    displayInformation()
-});
-
-submitId.addEventListener('click', submitFunc)
-    
+//runs when the submit button is pressed. Sets the question complete to true so that the timer may be ended. Run init so that the questions and submit button are hidden. Calculates wether the question was wrong or right. 
+//sets the previously added information back to blank. Displays the score. Adds 1 to the question counter to let the code know we are on the next question. Then displays the new video or image
 function submitFunc(event) {
-    // event.preventDefault();
-
     //clear the time and set it back to 30 secconds
     questionComplete = true;
 
@@ -269,6 +256,26 @@ function submitFunc(event) {
     return q
 };
 
+//the back button takes you back to the first page
+backButton.addEventListener('click', function(event){
+    redirectPage('./index.html')
+});
+
+//listens if the start button has been clicked. If it has then start the timer, set the video to hidden, and display the questions.
+startButton.addEventListener('click', function(event){
+    event.preventDefault()
+
+    //start the game timer
+    gameTimer()
+
+    video.style.visibility = 'hidden'
+
+    displayInformation()
+});
+
+//runs the submit function whenever the submit button is clicked
+submitId.addEventListener('click', submitFunc)
+    
 //run on startup
 init()
 
