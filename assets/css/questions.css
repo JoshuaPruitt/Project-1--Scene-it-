@@ -1,6 +1,8 @@
 html {
     margin: 0;
     padding: 0;
+    min-width: 75vh;
+    min-height: 75vh;
 }
 
 header {
@@ -76,7 +78,7 @@ body header section {
     background-color: rgb(149, 193, 237);
 }
 
-#contidionalText {
+#conditionalTextBox {
     display: flex;
     justify-content: center;
     align-items: center;
