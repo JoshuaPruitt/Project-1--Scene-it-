@@ -8,17 +8,33 @@
     <link rel="stylesheet" href="./assets/css/style.css">
   </head>
 
-  <body>
-    <!-- header is for the score, time left, and the back button-->
-    <header>
-      <!--Score-->
+  <style>
+    body {
+      background-color: #2006c7; 
+      padding: 20px;
+    }
+    header, main, footer {
+      background-color: #ffffff; 
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    }
+    .text-center {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header class="text-center">
       <section>
-        <table>
+        <table class="mx-auto">
           <tr>
             <th><h2 class='scoreTitle'>Score: <span></span></h2></th>
           </tr>
-          
-          <!--The updated score will be inserted into the span tags-->
+        
           <tr>
             <td><h4>Correct: <span id="scoreCorrect">0</span></h4></td>
             <td><h4>Wrong: <span id="scoreWrong">0</span></h4></td>
@@ -30,19 +46,18 @@
         <h2>Time Left: <span id="timeText"></span></h2>
       </section>
 
-      <!--back button-->
+    
       <div class="back">
         <input id='backButton' type="button" value="Go Back to Start!"/>
       </div>
     </header>
 
-    <!-- the start button and the video will be contained inside of the main element -->
-    <main>
-      <!-- Video section-->
+    <main class="text-center">
+      
       <section>
         <div id="videoBox">
           <h1><span id='conditionalText'></span></h1>
-          <!--video tag-->
+          
           <section id="video">
             <iframe id='defaultVideo' width="560" height="315" 
             src="https://www.youtube.com/embed/rzLIUgnKY40?si=cflZOP5RBIlmphE-" title="Default Video" frameborder="0" 
@@ -50,22 +65,18 @@
             </iframe>
           </section>
         </div>
-
-        
       </section>
 
-      <!-- start button-->
       <div class="startBox">
         <input id='startId' type="button" value="Start!"/>
       </div>
     </main>
 
-    <!-- questions will go inside of the footer element. They will be shown after the video is finished-->
-    <footer>
-      <div class="question-box">
+    <footer class="text-center">
+      <div class="question-box mx-auto">
         <form id="questions">
         
-          <label id="selectionTitle"></label></br>
+          <label id="selectionTitle"></label><br>
 
           <label>
             <input id="_1" type="radio" name="question" value="1">
@@ -89,11 +100,13 @@
 
         </form>
         
-        <!--Submit button for the questions-->
         <input id='submit' type="submit" value="Submit"/>
       </div>
     </footer>
-  </body>
+  </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
   <script src="./assets/js/questionsScript.js"></script>
+</body>
 </html>
