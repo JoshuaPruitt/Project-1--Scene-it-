@@ -7,7 +7,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 5px solid red;
+    border: 5px solid rgb(21, 113, 243);
     margin-bottom: 30px;
 }
 
@@ -33,9 +33,10 @@ body header section {
     padding: 20px;
 }
 
+
 .timeLeft {
     /* padding: 20px; */
-    color: rgb(2, 2, 110);
+    color: rgb(11, 105, 139);
 }
 
 .back, .backButton {
@@ -53,6 +54,15 @@ body header section {
 .question-box {
     display: flex;
     flex-direction: column;
+}
+
+#scoreCorrect{
+    color: rgb(5, 109, 35);
+    margin-right: 30px;
+}
+
+#scoreWrong{
+    color: rgb(130, 14, 14);
 }
 
 #videoBox {

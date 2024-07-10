@@ -39,6 +39,7 @@ var q = 0;
 var right = 0;
 var wrong = 0;
 var selectionNo;
+let firstTime = true;
 
 //correct and inncorect message 
 let correctText = 'You got a question right! Good Job!!';
@@ -82,11 +83,15 @@ function displayInformation(){
     selection2Label.innerHTML = mainObj.questions[q].q2;
     selection3Label.innerHTML = mainObj.questions[q].q3;
     selection4Label.innerHTML = mainObj.questions[q].q4;
-    //remove video and add new one. If statement is for if there is a default video on the screen and we want to replace that. (will likely be removed as there will be no default video later)
-    //add new video and append it
-    video.innerHTML = mainObj.Video[q];
-    console.log('replaced video')
+    
 };
+
+function displayVideo(){
+    //replace default video with new information. Also replace later videos and images
+    video.innerHTML = "";
+    video.innerHTML = mainObj.Video[q]
+    console.log('replaced video. Last video was replaced with video ' + q)
+}
 
 //calculate if a question is right or wrong
 function calculateWrongRight (){
@@ -157,13 +162,24 @@ function init(){
     questions.style.visibility = 'hidden'
     submitId.style.visibility = 'hidden'
 
-    //if the page has just started then set the starting information. Take information from starting page and change object to = that starting information
-    if(JSON.parse(localStorage.getItem('selectionInfo')) !== null){
 
-        let unseperatedObj = JSON.parse(localStorage.getItem('selectionInfo'))
-        selectionChoice = unseperatedObj
+    //if the page has just started then set the starting information. Take information from starting page and change object to = that starting information
+    if (q==0){
+        if(JSON.parse(localStorage.getItem('selectionInfo')) !== null){
+
+            //grab the selection info (selec)
+            let unseperatedObj = JSON.parse(localStorage.getItem('selectionInfo'))
+            let selectedQuiz = JSON.parse(localStorage.getItem('selectedQuiz'))
+            selectionChoice = unseperatedObj
+            mainObj = selectedQuiz
+
+            console.log('Main object has been replaced.')
+        }
+
+        //display video on startup
+        displayVideo()
     }
-    return
+    console.log('We are on question '+q)
 };
 
 //redirects the page
@@ -207,6 +223,11 @@ submitId.addEventListener('click', function(event) {
     
     // add 1 to q to go to next question
     q++
+
+    //set new video/img
+    displayVideo()
+
+    return q
 });
 
 //run on startup
