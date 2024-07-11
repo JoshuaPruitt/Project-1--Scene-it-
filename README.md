@@ -1,6 +1,6 @@
 # Project 01 (Scene It Game)
 
-.## Introduction
+## Introduction
 Welcome to our PROJECT-1--SCENE-IT- This site was made to complete the 1st group project for the coding bootcamp. It is a scene it game website, users choose between 4 categories, to answer 5 questions, to see what their high score is at the end of the round.
 
 ## Installation
@@ -34,3 +34,18 @@ let questionComplete = false
 - Michael Isom
 
 - Parker Speares(Me)
+
+## Contact US
+
+<a href="https://www.linkedin.com/in/joshua-pruitt-1a494a311/">My LinkedIn</a>
+       
+<a href="https://github.com/JoshuaPruitt">My GitHub</a>
+
+<a href="https://github.com/jacobmenlove">My GitHub</a>
+       
+<a href="https://github.com/Michael-Isom">My GitHub</a>
+
+<a href="https://www.linkedin.com/in/parker-speares-a24140206/">My LinkedIn</a>
+
+<a href="https://github.com/parkerspeares">My GitHub</a>
+
