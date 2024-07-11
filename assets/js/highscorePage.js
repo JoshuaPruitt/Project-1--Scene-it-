@@ -5,10 +5,27 @@
 //the page should also take a users name in so that it can take their score and put it on the highscore page
 
 //right and wrong are how many questions the user got right and or wrong
-let right = 0;
-let wrong = 0;
+
+var correctTotalJSON = localStorage.getItem("finalScores")
+let finalScores = JSON.parse(correctTotalJSON)
+console.log(finalScores)
+let right = "Good job!";
+let wrong = "Too bad try again!";
+
+if(finalScores.correct>finalScores.incorrect){
+    let element = document.getElementById('message');
+    element.textContent = right;
+    element.classList.add('text-success');
+}
+else{
+    let element = document.getElementById('message');
+    element.textContent = wrong;
+    element.classList.add('text-danger');
+}
+
+    
 //total questions is right and wrong added together. 
-let totalQuestions = 0;
+let totalQuestions = 5;
 //selection choice is the quiz that was selected. (if someone selected the 'games' quiz this variable will say 'games')
 let selectionChoice;
 
@@ -18,7 +35,7 @@ function init(){
     let finalScores = JSON.parse(localStorage.getItem('finalScores'))
     //set scores to equal the requested information
     right = finalScores.correct
-    wrong = finalScores.incorrect
+    wrong = finalScores.incorrect 
     //add scores to get a total score
     totalQuestions = right + wrong
     //get the selection choice
