@@ -24,3 +24,13 @@ let correctText = 'You got a question right! Good Job!!';
 let inncorrectText = 'Im sorry, you got this question wrong';
 
 let questionComplete = false
+
+## Credits
+
+- Joshua Pruitt
+
+- Jacob MenLove
+
+- Michael Isom
+
+- Parker Speares(Me)
