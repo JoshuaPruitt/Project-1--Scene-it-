@@ -49,3 +49,10 @@ let questionComplete = false
 
 <a href="https://github.com/parkerspeares">My GitHub</a>
 
+## Technologies Used 
+
+- Visual Studio Code, for writting code, debuging, and loging changes to the git repository.
+- Bootstrap for the websites CSS.
+- Google Chrome, for displaying the page and debugging said page using the console. 
+- GitBash, for logging my changes and uploading my data.
+- GitHub, for putting the page on the web and for providing cloud storage for storing the site and its changes.
