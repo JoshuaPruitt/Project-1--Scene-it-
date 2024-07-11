@@ -22,6 +22,9 @@ else{
     element.textContent = wrong;
     element.classList.add('text-danger');
 }
+let score = finalScores.correct * 250;
+let scoreElement = document.getElementById('score')
+scoreElement.textContent = score
 
     
 //total questions is right and wrong added together. 
