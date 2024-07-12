@@ -5,11 +5,15 @@ html {
     min-height: 75vh;
 }
 
+body {
+    background: linear-gradient(0.25turn, #e66465,#9198e5); 
+    padding: 20px;
+}
+
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 5px solid rgb(21, 113, 243);
     margin-bottom: 30px;
 }
 
@@ -30,15 +34,36 @@ form {
     margin-bottom: 10px;
 }
 
+/* input {
+    background-color: rgb(12, 124, 168);
+    border: 2px solid rgb(8, 128, 165);
+    border-radius: 5px;
+    color: white;
+} */
+
+header, main, footer {
+    background-color: #2d2d5c; 
+    color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: solid 5px #28284b;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+}
+
 /* changes the score section */
 body header section {
     padding: 20px;
 }
 
+.text-center {
+    text-align: center;
+}
+
 
 .timeLeft {
     /* padding: 20px; */
-    color: rgb(11, 105, 139);
+    color: rgb(244, 108, 108);
 }
 
 .back, .backButton {
@@ -54,8 +79,13 @@ body header section {
 }
 
 .question-box {
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
+}
+
+#questions input {
+    margin: 5px;
+    background-color: red;
 }
 
 #scoreCorrect{
