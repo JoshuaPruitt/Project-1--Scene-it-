@@ -1,35 +1,58 @@
 # Project 01 (Scene It Game)
-<!--this is just the title of the page-->
 
 ## Introduction
-<!--basic introduction on what the website does-->
-
+Welcome to our PROJECT-1--SCENE-IT- This site was made to complete the 1st group project for the coding bootcamp. It is a scene it game website, users choose between 4 categories, to answer 5 questions, to see what their high score is at the end of the round.
 
 ## Installation
-<!--make sure to replace the href with the deployed site link-->
-
-No installation required! To view the page in action simply click on this link <a href="put deployed website here">(Change this to reflect the page)</a>. That will take you to the deployed site. 
+No installation required! To view the page in action simply click on this link <a href="file:///C:/Users/User/OneDrive/Documents/GitHub/Project-1--Scene-it-/index.html">Scene it Game!</a>. That will take you to the deployed site. 
 
 ## Usage
-<!--how does the page work. Provide a detailed explanation of each page-->
-
-## Screenshots
-<!--just provide screenshots of the page-->
+To use this site simply open the page. This opens the starting page which contains input boxes for Music, Movies, Sports, and Games. Once the user chooses a category and clicks the 'start' button, they are taken to the 1st question of the category. Then the User clicks on the video(or views the image.) Once the user views video or image, then they click on the start button. Then the user is required to choose the correct input asking a question related to its video, or image, within a time limit of 30 seconds. This process is repeated for 4 more rounds of questions. The users score will display the number of correct, and wrong answers from previous questions. Once all 5 questions are answered, then the round has ended, and the user is directed to the high score page. At the top of the page, the text indicates if the users final score is adequate or not, below this text, other users high scores are displayed from the category. Then, the user clicks 'Start Again' for a new round, or exits out of the page, and the game is over. Each answer is stored in local Storage and grabbed upon page startup.
 
 ## Code Snippit
-<!--add an important piece of code and explain what it does and why its important-->
+This is a piece of code from the questionsScript.js script. 'q' keeps track of which question we are on. 'right' and 'wrong' keeps check of the score. No selection is required, and firstTime ensures the answer is submited when clicked. qTime is the time aloted for each question. correctText displays correct, incorrectText dispalys wrong. questionComplete is to ensure the question is completed.
+
+var q = 0;
+var right = 0;
+var wrong = 0;
+var selectionNo;
+let firstTime = true;
+
+let qTime = 30
+ 
+let correctText = 'You got a question right! Good Job!!';
+let inncorrectText = 'Im sorry, you got this question wrong';
+
+let questionComplete = false
 
 ## Credits
-<!--credits is self explanatory-->
 
-## References
-<!--what documents were used to create important pieces of code?-->
+- Joshua Pruitt
+
+- Jacob MenLove
+
+- Michael Isom
+
+- Parker Speares(Me)
+
+## Contact US
+
+<a href="https://www.linkedin.com/in/joshua-pruitt-1a494a311/">My LinkedIn</a>
+       
+<a href="https://github.com/JoshuaPruitt">My GitHub</a>
+
+<a href="https://github.com/jacobmenlove">My GitHub</a>
+       
+<a href="https://github.com/Michael-Isom">My GitHub</a>
+
+<a href="https://www.linkedin.com/in/parker-speares-a24140206/">My LinkedIn</a>
+
+<a href="https://github.com/parkerspeares">My GitHub</a>
 
 ## Technologies Used 
-<!--this is just what we used to put the page together. We let users know this so that they when they create their own projects they can use what we used as a reference. Currently the technologies used is in first person so make sure to change to reflect a third person view-->
 
 - Visual Studio Code, for writting code, debuging, and loging changes to the git repository.
+- Bootstrap for the websites CSS.
 - Google Chrome, for displaying the page and debugging said page using the console. 
-- Mozilla Web Docs, for refreshing my knowlege and helping me learn new tags and systems for this site. 
 - GitBash, for logging my changes and uploading my data.
 - GitHub, for putting the page on the web and for providing cloud storage for storing the site and its changes.

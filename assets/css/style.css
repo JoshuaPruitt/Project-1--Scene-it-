@@ -1,0 +1,91 @@
+
+html {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+main, h1{
+    background-color: #2d2d5c;
+    border-radius: 12px;
+    border: solid 5px #28284b;
+}
+
+header, main {
+    color: white;
+}
+
+header {
+    background: linear-gradient(to top, #bf9de8, #9198e5);
+    border: solid 0cqh;
+    border-radius: 45px;
+    padding: 16px 40px;
+    padding-bottom: 10px;
+    margin-top: 35%;
+}
+
+h1 {
+    /* background-color: white; */
+    padding: 25px 80px;
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 40px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    /* border: solid 5px #28284b;
+    border-radius: 12px 12px 6px 6px; */
+    transform: translateY(15px);
+}
+
+main {
+    padding-bottom: 40px;
+    margin: 30px;
+}
+
+body {
+    background: linear-gradient(0.25turn, #e66465,#9198e5);
+    padding: 20px;
+}
+
+.form-check {
+    padding: 0 40%;
+    float: left;
+    font-size: 20px;
+}
+
+.form-check-input{
+    border-color: #191932;
+}
+
+.form-check-input:checked{
+    border-color: rgb(0, 42, 255);
+}
+
+.center-text {
+    height: 200px;
+}
+.center-content-p, .center-content-c {
+    
+    padding: 20px 0;
+    display: block;
+    text-align: center;
+    height: 100%; 
+}
+
+.center-content-c {
+    padding: 50px 40%;
+    float: left;
+}
+
+.radio-label {
+    margin-bottom: 10px; 
+}
+
+#startButton {
+    font-size: 23px;
+    margin: 0 25px;
+    width: 110px;
+}
