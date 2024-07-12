@@ -257,8 +257,14 @@ function submitFunc(event) {
 };
 
 //the back button takes you back to the first page
-backButton.addEventListener('click', function(event){
-    redirectPage('./index.html')
+backButton.addEventListener('click', function(event){    
+     let userConfirmed = confirm("Are you sure you want to start over?");
+    if (userConfirmed) {
+        //alert("Yes")
+        redirectPage('./index.html')
+    } else {
+        //alert("Cancel");
+    }
 });
 
 //listens if the start button has been clicked. If it has then start the timer, set the video to hidden, and display the questions.
