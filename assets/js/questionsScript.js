@@ -3,13 +3,13 @@
 // First itll show a video. Once the video is finished a player can press the start button. The video will disapear, a timer will start, and questions will append to the page.
 // if the timer finishes before the questions have been answered then a fail will display onto the screen. Then it will go to the next question
 
-//Local storage connections still must be made
+// The timer is a shoddy fix. Currently if the user is still selecting the correct answer then when the timer finishes it will read as a correct instead of an automatic fail. This can be solved by rewritting the order of operations.
 
 //Contained within header
     //scoreCorrect and scoreWrong will change the number in both to update the score
 const scoreCorrrect = document.getElementById('scoreCorrect');
 const scoreWrong = document.getElementById('scoreWrong')
-const timeLeft = document.querySelector('timeLeft');
+const timeLeft = document.getElementById('timeText');
 const backButton = document.getElementById('backButton');
 
 //Contained within main section
@@ -39,10 +39,22 @@ var q = 0;
 var right = 0;
 var wrong = 0;
 var selectionNo;
+let firstTime = true;
+
+//this is the time for each question. 30 is thirty seconds.
+let qTime = 30
 
 //correct and inncorect message 
 let correctText = 'You got a question right! Good Job!!';
 let inncorrectText = 'Im sorry, you got this question wrong';
+
+//manges whether a question has been completed or not
+let questionComplete = false
+
+//redirects the page
+const redirectPage = function(url){
+    location.assign(url)
+};
 
 //Test category
 let mainObj = {
@@ -61,7 +73,7 @@ let mainObj = {
     ]  
 };
 
-
+//displays all of the questions and buttons for the page
 function displayInformation(){
     //set the questions and submit button to visible and set the start button to invisible
     questions.style.visibility = 'visible'
@@ -82,15 +94,18 @@ function displayInformation(){
     selection2Label.innerHTML = mainObj.questions[q].q2;
     selection3Label.innerHTML = mainObj.questions[q].q3;
     selection4Label.innerHTML = mainObj.questions[q].q4;
-    //remove video and add new one. If statement is for if there is a default video on the screen and we want to replace that. (will likely be removed as there will be no default video later)
-    //add new video and append it
-    video.innerHTML = mainObj.Video[q];
-    console.log('replaced video')
+    
 };
+
+function displayVideo(){
+    //replace default video with new information. Also replace later videos and images
+    video.innerHTML = "";
+    video.innerHTML = mainObj.Video[q]
+    console.log('replaced video. Last video was replaced with video ' + q)
+}
 
 //calculate if a question is right or wrong
 function calculateWrongRight (){
-    let message;
 
     //checks to see if any of the values are checked
     for (let x=0; x < selection.length; x++){
@@ -104,18 +119,17 @@ function calculateWrongRight (){
             if (mainObj.questions[q].questionAnswer == selection[x].value){
                 //add one to right
                 right++
-                message = correctText
-                winFailDisplay(message)
+                winFailDisplay(correctText)
             } else {
                 wrong++
-                message = inncorrectText
-                winFailDisplay(message)
+                winFailDisplay(inncorrectText)
             }
         }
     }
     return
 };
 
+//displays a win or fail message depending on the answer
 function winFailDisplay(message){
     video.style.visibility = 'hidden'
     contidionText.innerHTML = message;
@@ -136,7 +150,7 @@ function winFailDisplay(message){
         //set the video back to visible and set the background color back to normal
         video.style.visibility = 'visible'
         videoBox.style.backgroundColor = '#95C1ED'
-        clearInterval(conditonTimer)
+        clearTimeout(conditonTimer)
 
         startButton.style.visibility = 'visible'
     }, 1000 * 3)
@@ -157,35 +171,63 @@ function init(){
     questions.style.visibility = 'hidden'
     submitId.style.visibility = 'hidden'
 
+
     //if the page has just started then set the starting information. Take information from starting page and change object to = that starting information
-    if(JSON.parse(localStorage.getItem('selectionInfo')) !== null){
+    if (q==0){
+        if(JSON.parse(localStorage.getItem('selectionInfo')) !== null){
 
-        let unseperatedObj = JSON.parse(localStorage.getItem('selectionInfo'))
-        selectionChoice = unseperatedObj
+            //grab the selection info (selec)
+            let unseperatedObj = JSON.parse(localStorage.getItem('selectionInfo'))
+            let selectedQuiz = JSON.parse(localStorage.getItem('selectedQuiz'))
+            selectionChoice = unseperatedObj
+            mainObj = selectedQuiz
+
+            console.log('Main object has been replaced.')
+        }
+
+        //display video on startup
+        displayVideo()
     }
-    return
+    console.log('We are on question '+q)
 };
 
-//redirects the page
-const redirectPage = function(url){
-    location.assign(url)
+//controls the timer for each question
+function gameTimer(){
+    const windowTimer = () => {
+        timeLeft.innerHTML = qTime
+        qTime--
+        
+        // this checks to see whether the question has been completed or not. If the question has been completed then reset the timer and clear it so that it is ready for the next question
+        if (questionComplete){
+            //clear the interval, set the timer back to 30 secconds and append the reset time to the page
+            clearInterval(timeee)
+            qTime = 30
+            timeLeft.innerHTML = qTime
+            questionComplete = false
+        }
+
+        if (qTime == 0){
+            //so that it still displays the current time
+            timeLeft.innerHTML = qTime
+            //once the time has gotten down to zero then clear the timer, give a fail message, and set the time back to 30
+            clearInterval(timeee)
+            qTime = 30
+
+            //call submit func to 
+            submitFunc()
+        }
+    }
+
+    let timeee = setInterval(windowTimer, 1000)
+    return 
 };
 
-//the back button takes you back to the first page
-backButton.addEventListener('click', function(event){
-    redirectPage('./index.html')
-});
+//runs when the submit button is pressed. Sets the question complete to true so that the timer may be ended. Run init so that the questions and submit button are hidden. Calculates wether the question was wrong or right. 
+//sets the previously added information back to blank. Displays the score. Adds 1 to the question counter to let the code know we are on the next question. Then displays the new video or image
+function submitFunc(event) {
+    //clear the time and set it back to 30 secconds
+    questionComplete = true;
 
-startButton.addEventListener('click', function(event){
-    event.preventDefault()
-
-    video.style.visibility = 'hidden'
-
-    displayInformation()
-});
-
-submitId.addEventListener('click', function(event) {
-    event.preventDefault();
     //set the submit button to hidden so that it cannot be pressed mutiple times
     init()
 
@@ -207,8 +249,43 @@ submitId.addEventListener('click', function(event) {
     
     // add 1 to q to go to next question
     q++
+
+    //set new video/img
+    displayVideo()
+
+    return q
+};
+
+//the back button takes you back to the first page
+backButton.addEventListener('click', function(event){
+    redirectPage('./index.html')
+    <button id="backButton">Start Over</button>
+document.getElementbyId.addEventListener("click", function()
+{
+    let userConfirmed = confirm("Are you sure you want to start over?");
+    if (userConfirmed) {
+        alert("Yes")
+    } else {
+        alert("Cancel");
+    }
+    });
 });
 
+//listens if the start button has been clicked. If it has then start the timer, set the video to hidden, and display the questions.
+startButton.addEventListener('click', function(event){
+    event.preventDefault()
+
+    //start the game timer
+    gameTimer()
+
+    video.style.visibility = 'hidden'
+
+    displayInformation()
+});
+
+//runs the submit function whenever the submit button is clicked
+submitId.addEventListener('click', submitFunc)
+    
 //run on startup
 init()
 
