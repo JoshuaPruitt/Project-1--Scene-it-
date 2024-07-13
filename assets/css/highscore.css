@@ -1,14 +1,60 @@
 
 /* Additional custom styles */
 body {
-    background-color: #2006c7; /* Light gray background */
+    background: linear-gradient(0.25turn, #e66465,#9198e5); /* gradient background */
     padding: 20px;
 }
 
-main, aside {
-    background-color: #ffffff; /* White background for main and aside */
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 15%;
+}
+
+main, aside, footer {
+    background-color: #2d2d5c; /* White background for main and aside */
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 8px;
+    border: 5px solid #28284b;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+    color: white;
+}
+
+aside h2 {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+p {
+    margin: 10px;
+    font-size: 20px;
+    color: rgb(211, 211, 211);
+}
+
+ul {
+    margin-bottom: 20px;
+}
+
+footer {
+    border: solid #20203c 5px;
+}
+
+.sur-box {
+    padding: 0 20%;
+}
+
+#message {
+    font-size: 60px;
+    margin: 0 15vw 30px 15vw;
+    padding: 20px 0 20px 0;
+    /* margin-bottom: 20px; */
+    border: solid #20203c 5px;
+    border-radius: 12px;
+}
+
+#score{
+    font-size: 25px;
+    margin: 15px;
 }
