@@ -34,13 +34,6 @@ form {
     margin-bottom: 10px;
 }
 
-/* input {
-    background-color: rgb(12, 124, 168);
-    border: 2px solid rgb(8, 128, 165);
-    border-radius: 5px;
-    color: white;
-} */
-
 header, main, footer {
     background-color: #2d2d5c; 
     color: white;
@@ -78,11 +71,6 @@ body header section {
     font-size: 30px;
 }
 
-.question-box {
-    /* display: flex;
-    flex-direction: column; */
-}
-
 #questions input {
     margin: 5px;
     background-color: red;
@@ -109,6 +97,7 @@ body header section {
 }
 
 #conditionalTextBox {
+    color: rgb(88, 88, 88);
     display: flex;
     justify-content: center;
     align-items: center;

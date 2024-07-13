@@ -1,0 +1,14 @@
+
+/* Additional custom styles */
+body {
+    background-color: #2006c7; /* Light gray background */
+    padding: 20px;
+}
+
+main, aside {
+    background-color: #ffffff; /* White background for main and aside */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+}
