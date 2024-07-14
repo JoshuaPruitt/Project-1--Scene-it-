@@ -12,6 +12,7 @@ To use this site simply open the page. This opens the starting page which contai
 ## Code Snippit
 This is a piece of code from the questionsScript.js script. 'q' keeps track of which question we are on. 'right' and 'wrong' keeps check of the score. No selection is required, and firstTime ensures the answer is submited when clicked. qTime is the time aloted for each question. correctText displays correct, incorrectText dispalys wrong. questionComplete is to ensure the question is completed.
 
+````
 var q = 0;
 var right = 0;
 var wrong = 0;
@@ -24,30 +25,31 @@ let correctText = 'You got a question right! Good Job!!';
 let inncorrectText = 'Im sorry, you got this question wrong';
 
 let questionComplete = false
+````
 
 ## Credits
 
-- Joshua Pruitt
+- Michael Isom
 
 - Jacob MenLove
 
-- Michael Isom
+- Joshua Pruitt
 
-- Parker Speares(Me)
+- Parker Speares
 
 ## Contact US
 
-<a href="https://www.linkedin.com/in/joshua-pruitt-1a494a311/">My LinkedIn</a>
+<a href="https://www.linkedin.com/in/joshua-pruitt-1a494a311/">Joshua Pruitt's LinkedIn</a>
        
-<a href="https://github.com/JoshuaPruitt">My GitHub</a>
+<a href="https://github.com/JoshuaPruitt">Joshua Pruitt's GitHub</a>
 
-<a href="https://github.com/jacobmenlove">My GitHub</a>
+<a href="https://github.com/jacobmenlove">Jacob Menlove's GitHub</a>
        
-<a href="https://github.com/Michael-Isom">My GitHub</a>
+<a href="https://github.com/Michael-Isom">Michael Isom's GitHub</a>
 
-<a href="https://www.linkedin.com/in/parker-speares-a24140206/">My LinkedIn</a>
+<a href="https://www.linkedin.com/in/parker-speares-a24140206/">Parker Spears's LinkedIn</a>
 
-<a href="https://github.com/parkerspeares">My GitHub</a>
+<a href="https://github.com/parkerspeares">Parker Spears's GitHub</a>
 
 ## Technologies Used 
 
