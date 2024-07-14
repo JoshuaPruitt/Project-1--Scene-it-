@@ -86,3 +86,24 @@ body {
     margin: 0 25px;
     width: 110px;
 }
+
+@media (max-width: 690px){
+
+    body {
+        transform: translateY(-60px);
+    }
+    
+    h1 {
+        padding: 20px 40px;
+        font-size: 35px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    .form-check {
+        font-size: 26px;
+        transform: translateX(-20px);
+    }
+}
