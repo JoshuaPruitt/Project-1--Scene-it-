@@ -3,6 +3,8 @@
 body {
     background: linear-gradient(0.25turn, #e66465,#9198e5); /* gradient background */
     padding: 20px;
+
+    transform: translateY(-90px);
 }
 
 main {
