@@ -99,7 +99,6 @@ function displayInformation(){
 
 function displayVideo(){
     //replace default video with new information. Also replace later videos and images
-    video.innerHTML = "";
     video.innerHTML = mainObj.Video[q]
     console.log('replaced video. Last video was replaced with video ' + q)
 }
@@ -148,6 +147,10 @@ function winFailDisplay(message){
 
         contidionText.innerHTML = "";
         //set the video back to visible and set the background color back to normal
+        
+        //set new video/img
+        displayVideo()
+
         video.style.visibility = 'visible'
         videoBox.style.backgroundColor = '#413d7b'
         clearTimeout(conditonTimer)
@@ -231,6 +234,9 @@ function submitFunc(event) {
     //set the submit button to hidden so that it cannot be pressed mutiple times
     init()
 
+    //set video to have nothing in it
+    video.innerHTML = "";
+
     //calculate if the question is right or wrong
     calculateWrongRight()
 
@@ -249,9 +255,6 @@ function submitFunc(event) {
     
     // add 1 to q to go to next question
     q++
-
-    //set new video/img
-    displayVideo()
 
     return q
 };

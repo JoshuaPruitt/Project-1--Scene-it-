@@ -43,6 +43,11 @@ ul {
     padding: 0 20%;
 }
 
+#back-btn {
+    margin: 15px;
+    font-size: 20px;
+}
+
 #message {
     font-size: 60px;
     margin: 0 15vw 30px 15vw;
