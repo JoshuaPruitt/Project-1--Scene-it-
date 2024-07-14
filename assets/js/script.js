@@ -11,17 +11,22 @@ let quizzes = [
     {   
         //This is the music quiz
         //add your video tags here when you create your seperate category. The code switches out the video for the video that q represents. If q = 0 then q will pull up the first video, so on and so forth.
-        Video: ['<iframe width="560" height="315" src="https://www.youtube.com/embed/7AvXEmQU69Q?si=MnfVvYsgfmm98UFA&amp;controls=0" title="YouTube video player" frameborder="0" referrerpolicy="strict-origin-when-cross-origin" </iframe>', 
-            
+        Video: ["<img src='https://www.nin.com/wp-content/uploads/2016/08/HALO_08_TDS_2016_album_cover_srgb_medium-500x500.jpg' width=500 height=500></img>", 
+            "<img src='https://www.udiscovermusic.com/wp-content/uploads/2018/07/Nirvana-Bleach-Album-Cover-web-optimised-820.jpg' width=500 height=500></img>",
+            "<img src='https://i.guim.co.uk/img/media/17faf442ac055b33e587a7c05403adab29eace97/0_0_3027_1816/master/3027.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=ba4290e129f5f2ea69f12dbe8de50883' width=500 height=500></img>",
+            "<img src='https://c.files.bbci.co.uk/3DBF/production/_129170851_bbcm_norway_country_profile_map_270323.png width=500 height=250'></img>",
+            "<img src='https://upload.wikimedia.org/wikipedia/commons/0/07/FoosDublin210819-2_%2848620472807%29_%28cropped%29.jpg' width=300 height=410></img>",
+            "<img src='https://www.tennessean.com/gcdn/-mm-/462f152279ec2508bf095a7e38abe60a402fbe6a/c=489-738-4532-3022/local/-/media/2016/03/10/Nashville/Nashville/635932202768044155-Coheed-and-Cambria.jpg' width=600 height=400></img>",  
         ],
         //this stores all the questions for a category
         questions: [
             //question text stores the question label. Question answer shows the correct answer. q1-q4 are the selection labels
-            {questiontext: 'This is question 1', questionAnswer: 1, q1: 'Hai!', q2: "hellooo!", q3: 'greetings', q4: 'yipppee'},
-            {questiontext: 'This is question 2', questionAnswer: 2, q1: 'a', q2: "b", q3: 'c', q4: 'd'}, 
-            {questiontext: 'This is question 3', questionAnswer: 3, q1: 'b', q2: "c", q3: 'd', q4: 'a'}, 
-            {questiontext: 'This is question 4', questionAnswer: 4, q1: 'c!', q2: "d", q3: 'a', q4: 'b'},
-            {questiontext: 'This is question 5', questionAnswer: 1, q1: 'd!', q2: "a", q3: 'b', q4: 'c'},
+            {questiontext: 'Who is the main artist in Nine Inch Nails?', questionAnswer: 2, q1: 'Dave Mustaine', q2: "Trent Reznor", q3: 'Atticus Ross', q4: 'Lars Ulrich'},
+            {questiontext: 'When did Nirvana release their debut album?', questionAnswer: 3, q1: 'September 24, 1991', q2: "December 29th, 1988", q3: 'June 15th, 1989', q4: 'June 31st 1989'}, 
+            {questiontext: 'Which 80s artist is known for hits like "Out of Touch", "Maneater", and "I cant go for that" ?', questionAnswer: 4, q1: 'Prince', q2: "Rick Astley", q3: 'Michael Sembello', q4: 'Daryl Hall and John Oates'}, 
+            {questiontext: 'What genre of music is Norway famous for?', questionAnswer: 2, q1: 'Death Metal', q2: "Black Metal", q3: 'Polka', q4: 'Jazz Rock'},
+            {questiontext: 'What band was Dave Grohl previously apart of before the Foo Fighters?', questionAnswer: 1, q1: 'Nirvana', q2: "PocketWatch", q3: 'Sunny Day Real Estate', q4: 'Queens of the Stone Age'},
+            {questiontext: "This band is known for it's Concept Albums and Overarching story.", questionAnswer: 1, q1: 'Coheed and Cambria', q2: "David Bowie", q3: 'Pink Floyd', q4: 'King Crimson'},
         ] 
     },
 

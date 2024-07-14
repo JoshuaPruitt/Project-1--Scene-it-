@@ -9,7 +9,7 @@
 var correctTotalJSON = localStorage.getItem("finalScores")
 let finalScores = JSON.parse(correctTotalJSON)
 console.log(finalScores)
-let right = "Good job!";
+let right = "Great Job!!";
 let wrong = "Too bad try again!";
 
 if(finalScores.correct>finalScores.incorrect){
