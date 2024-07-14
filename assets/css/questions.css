@@ -53,15 +53,10 @@ body header section {
     text-align: center;
 }
 
-
 .timeLeft {
     /* padding: 20px; */
+    transform: translateX(-40px);
     color: rgb(244, 108, 108);
-}
-
-.back, .backButton {
-    font-size: 18px;
-    padding: 20px;
 }
 
 .startBox {
@@ -71,18 +66,42 @@ body header section {
     font-size: 30px;
 }
 
+/* controls top back button */
+#backButton {
+    font-size: 20px;
+}
+
+/* this controls the size of the buttons */
+#startId, #submit {
+    font-size: 25px;
+    padding: 2px 28px;
+}
+
+#submit {
+    margin-top: 10px;
+}
+
 #questions input {
     margin: 5px;
-    background-color: red;
+}
+
+#questions {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+#selectionTitle {
+    color: rgb(209, 208, 208);
+    font-size: 30px;
 }
 
 #scoreCorrect{
-    color: rgb(5, 109, 35);
+    color: rgb(8, 155, 50);
     margin-right: 30px;
 }
 
 #scoreWrong{
-    color: rgb(130, 14, 14);
+    color: rgb(178, 21, 21);
 }
 
 #videoBox {
@@ -93,7 +112,7 @@ body header section {
     /* setting the boxes minimum width and height */
     min-width: 50vh;
     min-height: 30vh;
-    background-color: rgb(149, 193, 237);
+    background-color: #413d7b;
 }
 
 #conditionalTextBox {

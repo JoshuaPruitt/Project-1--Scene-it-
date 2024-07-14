@@ -149,7 +149,7 @@ function winFailDisplay(message){
         contidionText.innerHTML = "";
         //set the video back to visible and set the background color back to normal
         video.style.visibility = 'visible'
-        videoBox.style.backgroundColor = '#95C1ED'
+        videoBox.style.backgroundColor = '#413d7b'
         clearTimeout(conditonTimer)
 
         startButton.style.visibility = 'visible'
