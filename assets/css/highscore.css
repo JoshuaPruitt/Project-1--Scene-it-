@@ -22,6 +22,7 @@ main, aside, footer {
     color: white;
 }
 
+/* controls the 'highscore' text */
 aside h2 {
     font-size: 50px;
     margin-bottom: 20px;
@@ -33,6 +34,7 @@ p {
     color: rgb(211, 211, 211);
 }
 
+/* controls the highscores and credits list */
 ul {
     margin-bottom: 20px;
     color: rgb(211, 211, 211);
@@ -60,4 +62,27 @@ ul {
 #score{
     font-size: 25px;
     margin: 15px;
+}
+
+
+@media (max-width: 690px){
+    
+    body {
+        transform: translateY(-50px);
+    }
+
+    /* controls the 'highscore' text */
+    aside h2 {
+        font-size: 35px;
+        margin-bottom: 20px;
+    }
+
+    ul {
+        font-size: 20px;
+    }
+
+    #message {
+        font-size: 40px;
+        padding: 10px 0 15px 0;
+    }
 }
