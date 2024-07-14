@@ -1,8 +1,6 @@
 html {
     margin: 0;
     padding: 0;
-    min-width: 75vh;
-    min-height: 75vh;
 }
 
 body {
@@ -21,6 +19,8 @@ main {
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
+    min-width: 100%;
+    min-height: 100%;
 }
 
 footer {
@@ -110,8 +110,6 @@ body header section {
     justify-content: center;
     align-items: center;
     /* setting the boxes minimum width and height */
-    min-width: 50vh;
-    min-height: 30vh;
     background-color: #413d7b;
 }
 
@@ -120,4 +118,74 @@ body header section {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+/*change elements when the screen is smaller to support different Devices */
+@media (max-width: 690px) {
+
+    html {
+        max-width:  690px;
+    }
+
+    header, main, footer {
+        padding: 10px;
+    }
+    
+    img {
+        /*change the image sizing */
+        max-width: 80%;
+        width: auto\9;
+        height: auto;
+    }
+
+    iframe {
+        /*change the video sizing */
+        max-width: 80%;
+        width: auto\9;
+        height: auto;
+    }
+
+    h4 {
+        font-size: 17px;
+    }
+
+    .scoreInfo {
+        font-size: 15px;
+    }
+
+    .timeLeft {
+        font-size: 18px;
+        transform: translateX(0);
+    }
+    
+    #videoBox {
+        min-width: 0;
+        min-height: 0;
+    }
+
+    #submitId, #submit, #backButton {
+        font-size: 15px;
+        padding: 2px;
+        margin: 0;
+    }
+
+    #startId {
+        font-size: 18px;
+        padding: 0 5px;
+    }
+
+    #selectionTitle {
+        font-size: 18px;
+    }
+
+    #questions {
+        color: rgb(170, 170, 170);
+        font-size: 15px;
+        margin: 15px 0;
+    } 
+
+    #conditionalTextBox {
+        font-size: 24px;
+    }
 }

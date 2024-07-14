@@ -133,8 +133,10 @@ function winFailDisplay(message){
     video.style.visibility = 'hidden'
     contidionText.innerHTML = message;
     
+    
     if(message == correctText){
         videoBox.style.backgroundColor = "#6BED8D";
+        
     } else {
         videoBox.style.backgroundColor = "#E29696";
     }
@@ -174,7 +176,6 @@ function init(){
     questions.style.visibility = 'hidden'
     submitId.style.visibility = 'hidden'
 
-
     //if the page has just started then set the starting information. Take information from starting page and change object to = that starting information
     if (q==0){
         if(JSON.parse(localStorage.getItem('selectionInfo')) !== null){
@@ -187,7 +188,6 @@ function init(){
 
             console.log('Main object has been replaced.')
         }
-
         //display video on startup
         displayVideo()
     }
@@ -220,7 +220,6 @@ function gameTimer(){
             submitFunc()
         }
     }
-
     let timeee = setInterval(windowTimer, 1000)
     return 
 };
