@@ -258,12 +258,10 @@ function submitFunc(event) {
 
 //the back button takes you back to the first page
 backButton.addEventListener('click', function(event){    
-     let userConfirmed = confirm("Are you sure you want to start over?");
-    if (userConfirmed) {
-        //alert("Yes")
+    let userConfirmed = confirm("Are you sure you want to start over?");
+
+    if (userConfirmed){
         redirectPage('./index.html')
-    } else {
-        //alert("Cancel");
     }
 });
 

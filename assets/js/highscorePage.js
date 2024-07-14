@@ -3,8 +3,9 @@
 //selectionChoice can be used to let the user know what quiz they chose at the index.html.
 
 //the page should also take a users name in so that it can take their score and put it on the highscore page
-
 //right and wrong are how many questions the user got right and or wrong
+
+const startAgain = document.getElementById('back-btn')
 
 var correctTotalJSON = localStorage.getItem("finalScores")
 let finalScores = JSON.parse(correctTotalJSON)
@@ -48,6 +49,20 @@ function init(){
     //returns those variables and rewrites them to have the newly grabbed information
     return
 };
+
+//function redirects the page
+const redirectPage = function(url){
+    location.assign(url)
+};
+
+//takes user back the the starting page
+startAgain.addEventListener('click', function(event){
+    let userConfirmed = confirm("Are you sure you want to go back to the start?");
+
+    if (userConfirmed){
+        redirectPage('./index.html')
+    }
+});
 
 
 
