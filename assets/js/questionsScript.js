@@ -135,6 +135,7 @@ function calculateWrongRight (){;
                     wrong++
                     winFailDisplay(inncorrectText)
                 }
+
                 return
             }
         }
@@ -216,6 +217,7 @@ function init(){
 //controls the timer for each question
 function gameTimer(){
     const windowTimer = () => {
+        console.log('question completes value is ' + questionComplete + ', on question ' + q)
         timeLeft.innerHTML = qTime
         qTime--
         
@@ -250,8 +252,6 @@ function gameTimer(){
 //runs when the submit button is pressed. Sets the question complete to true so that the timer may be ended. Run init so that the questions and submit button are hidden. Calculates wether the question was wrong or right. 
 //sets the previously added information back to blank. Displays the score. Adds 1 to the question counter to let the code know we are on the next question. Then displays the new video or image
 function submitFunc(event) {
-    //clear the time and set it back to 30 secconds
-    questionComplete = true;
     
     //set the submit button to hidden so that it cannot be pressed mutiple times
     init()
@@ -278,7 +278,6 @@ function submitFunc(event) {
     // add 1 to q to go to next question
     q++
 
-    questionComplete = false;
 
     return
 };
@@ -305,8 +304,13 @@ startButton.addEventListener('click', function(event){
 });
 
 //runs the submit function whenever the submit button is clicked
-submitId.addEventListener('click', submitFunc)
-    
+submitId.addEventListener('click', function(){
+    //set question complete to true then run the submit function
+    questionComplete = true;
+
+    submitFunc()
+});
+
 //run on startup
 init()
 
