@@ -41,6 +41,7 @@ var right = 0;
 var wrong = 0;
 var selectionNo;
 let firstTime = true;
+let failed = false;
 
 //this is the time for each question. 30 is thirty seconds.
 let qTime = 30
@@ -105,24 +106,36 @@ function displayVideo(){
 }
 
 //calculate if a question is right or wrong
-function calculateWrongRight (){
+function calculateWrongRight (){;
 
-    //checks to see if any of the values are checked
-    for (let x=0; x < selection.length; x++){
-        //.checked will check if a selection box has been checked
-        if(selection[x].checked){
-            
-            console.log('Question Answer: '+ mainObj.questions[q].questionAnswer)
-            console.log('Selection Value: '+ selection[x].value)
+    //if nothing was selected then give a fail and switch to next information
+    //if the timer ran out then its an automatic fail
+    if (failed == true){
+        failed = false
+        //increment the wrong
+        wrong++
+        winFailDisplay(inncorrectText)
 
-            //checks if the question answer and the selection equal the same value. If so then display correct
-            if (mainObj.questions[q].questionAnswer == selection[x].value){
-                //add one to right
-                right++
-                winFailDisplay(correctText)
-            } else {
-                wrong++
-                winFailDisplay(inncorrectText)
+    //else run the normal code
+    } else {
+        //checks to see if any of the values are checked
+        for (let x=0; x < selection.length; x++){
+            //.checked will check if a selection box has been checked
+            if(selection[x].checked){
+                
+                console.log('Question Answer: '+ mainObj.questions[q].questionAnswer)
+                console.log('Selection Value: '+ selection[x].value)
+
+                //checks if the question answer and the selection equal the same value. If so then display correct
+                if (mainObj.questions[q].questionAnswer == selection[x].value){
+                    //add one to right
+                    right++
+                    winFailDisplay(correctText)
+                } else {
+                    wrong++
+                    winFailDisplay(inncorrectText)
+                }
+                return
             }
         }
     }
@@ -135,7 +148,6 @@ function winFailDisplay(message){
     //set the conditional text box back to display and set its message
     conditonTextBox.style.display = 'flex';
     conditionText.innerHTML = message;
-    
     
     if(message == correctText){
         videoBox.style.backgroundColor = "#6BED8D";
@@ -181,6 +193,7 @@ function init(){
     //on startup hide the questions
     questions.style.visibility = 'hidden';
     submitId.style.visibility = 'hidden';
+
     
     //if the page has just started then set the starting information. Take information from starting page and change object to = that starting information
     if (q==0){
@@ -216,18 +229,22 @@ function gameTimer(){
         }
 
         if (qTime == 0){
+            qTime = 30;
             //so that it still displays the current time
             timeLeft.innerHTML = qTime
             //once the time has gotten down to zero then clear the timer, give a fail message, and set the time back to 30
             clearInterval(timeee)
-            qTime = 30
+
+            //failed flag. Will make sure the question returns a fail
+            failed = true;
 
             //call submit func to 
             submitFunc()
         }
     }
+    //set timer using the window timer function
     let timeee = setInterval(windowTimer, 1000)
-    return 
+    return
 };
 
 //runs when the submit button is pressed. Sets the question complete to true so that the timer may be ended. Run init so that the questions and submit button are hidden. Calculates wether the question was wrong or right. 
@@ -235,7 +252,7 @@ function gameTimer(){
 function submitFunc(event) {
     //clear the time and set it back to 30 secconds
     questionComplete = true;
-
+    
     //set the submit button to hidden so that it cannot be pressed mutiple times
     init()
 
@@ -261,7 +278,9 @@ function submitFunc(event) {
     // add 1 to q to go to next question
     q++
 
-    return q
+    questionComplete = false;
+
+    return
 };
 
 //the back button takes you back to the first page

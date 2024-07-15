@@ -3,6 +3,10 @@ html {
     padding: 0;
 }
 
+#questions {
+    visibility: hidden;
+}
+
 body {
     background: linear-gradient(0.25turn, #e66465,#9198e5); 
     padding: 20px;
