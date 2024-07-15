@@ -54,7 +54,6 @@ body header section {
 }
 
 .timeLeft {
-    /* padding: 20px; */
     transform: translateX(-40px);
     color: rgb(244, 108, 108);
 }
@@ -115,9 +114,12 @@ body header section {
 
 #conditionalTextBox {
     color: rgb(88, 88, 88);
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
+    
+    width: 500px;
+    height: 400px;
 }
 
 
@@ -191,5 +193,8 @@ body header section {
 
     #conditionalTextBox {
         font-size: 24px;
+
+        width: 400px;
+        height: 250px;
     }
 }

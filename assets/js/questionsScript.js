@@ -18,7 +18,8 @@ const video = document.getElementById('video')
     //defaultVideo will likely be removed later
 const defaultVideo = document.getElementById('defaultVideo')
 const startButton = document.getElementById('startId');
-const contidionText = document.getElementById('conditionalText')
+const conditionText = document.getElementById('conditionalText')
+const conditonTextBox = document.getElementById('conditionalTextBox')
 
 //Contained within footer
 const questions = document.getElementById('questions')
@@ -130,8 +131,10 @@ function calculateWrongRight (){
 
 //displays a win or fail message depending on the answer
 function winFailDisplay(message){
-    video.style.visibility = 'hidden'
-    contidionText.innerHTML = message;
+    video.style.visibility = 'hidden';
+    //set the conditional text box back to display and set its message
+    conditonTextBox.style.display = 'flex';
+    conditionText.innerHTML = message;
     
     
     if(message == correctText){
@@ -147,7 +150,10 @@ function winFailDisplay(message){
             endGame()
         }
 
-        contidionText.innerHTML = "";
+        //stop displaying the conditional box and reset its text
+        conditonTextBox.style.display = 'none';
+        conditionText.innerHTML = "";
+
         //set the video back to visible and set the background color back to normal
         
         //set new video/img
@@ -173,9 +179,9 @@ function endGame(){
 //initialize the page on startup. 
 function init(){
     //on startup hide the questions
-    questions.style.visibility = 'hidden'
-    submitId.style.visibility = 'hidden'
-
+    questions.style.visibility = 'hidden';
+    submitId.style.visibility = 'hidden';
+    
     //if the page has just started then set the starting information. Take information from starting page and change object to = that starting information
     if (q==0){
         if(JSON.parse(localStorage.getItem('selectionInfo')) !== null){
